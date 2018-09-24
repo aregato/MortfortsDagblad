@@ -1,0 +1,111 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2018-aug-08, 12:32:20
+    Author     : hannes
+*/
+
+body{
+    background-color: rgba(223, 236, 239, 1) !important;
+    height: 100%;
+    margin: 0;
+}
+
+header{
+    height: 40vh;
+    
+    background-color: rgba(220, 53, 69, 0.6) !important;
+    color: white;
+}
+header > h1{
+    margin-top: 10px;
+    font-size: 100px;
+}
+section.sm_container{
+    height: 60vh;
+    
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.ri{
+    margin-left: 40px;
+}
+main > .row > .col-sm-2 > h3{
+    text-align: center;
+}
+#openMenu{
+    position: fixed;
+    top: 0;
+    
+    margin-left: 10px;
+    margin-top: 10px;
+    width: auto;
+    height: auto;
+}
+
+#menu{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    
+    display: none;
+}
+
+#menu > ul > li > a.navbar-brand{
+    font-size: 30px;
+}
+#menu > ul > li{
+    padding: 1px 40px;
+}
+#menu > ul > li.first > a{
+    margin-left: 10px;
+}
+#menu > ul > li > a{
+    font-size: 22px;
+    padding: 1px 40px;
+}
+#menu > ul > li > a:hover{
+    background-color: lightcoral;
+}
+
+#menu > ul > li.nav-right > a{
+    font-size: 22px;
+}
+#logInMenu{
+    display: none;
+}
+
+.right{
+    position: fixed;
+    right: 0;
+}
+
+footer{
+    height: 16vh;
+    background-color: rgba(220, 53, 69, 0.6) !important;    
+}
+footer > div > .row > a,footer > div > .row > ul{
+    margin-top: 40px;
+}
+
+footer > div > div > ul{
+    list-style: none;
+}
+footer > div > div > ul li{
+    display: inline;
+    padding: 5px;
+}
+footer > div > div > ul > li > a{
+    padding: 0px 0px;
+}
+footer > div > div > ul > li > a:hover{
+    background-color: lightcoral;
+}
+.tight{
+    margin-left: 500px;
+}
