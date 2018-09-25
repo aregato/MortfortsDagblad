@@ -14,44 +14,13 @@
     <body>
         
         <header class="jumbotron text-center">
-            <h1>Mörtfors dagblad v1</h1>
+            <h1>Mörtfors dagblad v0.1</h1>
             <p>{{wrong}}</p>
         </header>
         
         <section class="sm_container">
             <div class="row">
-                <div class="col-sm-2">
-                    <h3>Column 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 4</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 5</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 6</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing eli1...</p>
-                    
-                </div>
+                <h2>Artiklar</h2>
             </div>
         </section>
         
@@ -66,7 +35,7 @@
         <nav id="menu" class="navbar navbar-expand-sm bg-danger navbar-dark">
             
             <ul class="navbar-nav">
-                <li><a class="navbar-brand" href="/">Logo</a></li>
+                <li><a class="navbar-brand">Logo</a></li>
                 <li class="first nav-item active">
                     <a class="nav-link" href="/">Hem</a>
                 </li>
@@ -86,11 +55,11 @@
         <nav id="logInMenu" class="navbar navbar-expand-sm bg-danger navbar-dark">
             
             <ul class="navbar-nav">
-                <li><a class="navbar-brand" href="/">Logo</a></li>
-                <li class="first nav-item active">
+                <li><a class="navbar-brand">Logo</a></li>
+                <li class="first nav-item">
                     <a class="nav-link" href="/">Hem</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/news">Nyheter</a>
                 </li>
                 <li class="nav-item">
@@ -103,11 +72,12 @@
                     <a class="nav-link" href="/settings">Inställningar</a>
                 </li>
                 <li class="nav-item right">
-                    <a class="tight" href="/">Logga ut</a>
+                    <a class="nav-link tight" href="/">Logga ut</a>
                 </li>
             </ul>
             
         </nav>
+        
         
         <!-- Modal -->
         <div id="logInModal" class="modal fade" role="dialog">
@@ -144,9 +114,9 @@
                 <div class="row">
                     <a>Logo</a>
                     <ul>
-                        <li><a href="/">Hem</a></li>
-                        <li><a href="/news">Nyheter</a></li>
-                        <li><a href="/news">Bildarkiv</a></li>
+                        <li><a   href="/">Hem</a></li>
+                        <li><a class="activ" href="/news">Nyheter</a></li>
+                        <li><a href="/images">Bildarkiv</a></li>
                         <li><a class="tight" href="#" data-toggle="modal" data-target="#logInModal">Logga in</a></li>
                     </ul>
                 </div>
@@ -158,7 +128,7 @@
                     <a>Logo</a>
                     <ul>
                         <li><a href="/">Hem</a></li>
-                        <li><a href="/news">Nyheter</a></li>
+                        <li><a class="activ" href="/news">Nyheter</a></li>
                         <li><a href="/images">Bildarkiv</a></li>
                         <li><a href="/add">Lägg till</a></li>
                         <li><a href="/settings">Inställningar</a></li>

@@ -30,7 +30,7 @@ def loggedIn():
 def news():
     return render_template("news.html")
 
-@app.route('/imgages')
+@app.route('/images')
 def images():
     return render_template("images.html")
 
@@ -40,7 +40,7 @@ def add():
 
 @app.route('/settings')
 def settings():
-    return render_template("setting.html")
+    return render_template("settings.html")
 
 
 #METHODS

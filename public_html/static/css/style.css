@@ -14,6 +14,7 @@ body{
     margin: 0;
 }
 
+
 header{
     height: 40vh;
     
@@ -25,7 +26,7 @@ header > h1{
     font-size: 100px;
 }
 section.sm_container{
-    height: 60vh;
+    height: 51vh;
     
     width: 90%;
     margin-left: auto;
@@ -65,9 +66,10 @@ main > .row > .col-sm-2 > h3{
 #menu > ul > li.first > a{
     margin-left: 10px;
 }
-#menu > ul > li > a{
+#menu > ul > li.nav-item > a{
     font-size: 22px;
     padding: 1px 40px;
+    margin-top: 10px;
 }
 #menu > ul > li > a:hover{
     background-color: lightcoral;
@@ -77,9 +79,34 @@ main > .row > .col-sm-2 > h3{
     font-size: 22px;
 }
 #logInMenu{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    
     display: none;
 }
 
+#logInMenu > ul > li > a.navbar-brand{
+    font-size: 30px;
+}
+#logInMenu > ul > li{
+    padding: 1px 40px;
+}
+#logInMenu > ul > li.first > a{
+    margin-left: 10px;
+}
+#logInMenu > ul > li.nav-item > a{
+    font-size: 22px;
+    padding: 1px 40px;
+    margin-top: 10px;
+}
+#logInMenu > ul > li > a:hover{
+    background-color: lightcoral;
+}
+
+#logInMenu > ul > li.nav-right > a{
+    font-size: 22px;
+}
 .right{
     position: fixed;
     right: 0;
@@ -89,8 +116,8 @@ footer{
     height: 16vh;
     background-color: rgba(220, 53, 69, 0.6) !important;    
 }
-footer > div > .row > a,footer > div > .row > ul{
-    margin-top: 40px;
+footer > div > .row{
+    padding-top: 4%;
 }
 
 footer > div > div > ul{
@@ -100,12 +127,24 @@ footer > div > div > ul li{
     display: inline;
     padding: 5px;
 }
+footer > div > div > ul > li > a, footer > div > div > a{
+    font-size: 110%;
+}
 footer > div > div > ul > li > a{
     padding: 0px 0px;
+    color: black;
+    padding: 2px 5px;
+    
 }
 footer > div > div > ul > li > a:hover{
     background-color: lightcoral;
 }
 .tight{
     margin-left: 500px;
+}
+.activ{
+    padding: 10px 10px;
+    border-radius: 20px;
+    background-color: rgba(220, 53, 69, 0.2) !important;
+    color: white;
 }

@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 $(function(){
-    check_logged_in() 
-    $(".tight").click(function(){if_logout()});
+    check_logged_in(); 
+    $(".tight").click(function(){if_logout();});
+   
 });
 
 function check_logged_in(){  
@@ -28,13 +29,14 @@ function check_logged_in(){
 function if_logged_in(){
     console.log("Loggar in");
 
-    $("#footerIn").hide()
-    $("#footerOut").show()
+    $("#footerIn").hide();
+    $("#footerOut").show();
 }
 function if_logout(){
     console.log("Loggar ut");
     
     localStorage.removeItem('user');
-    $("#footerIn").show()
-    $("#footerOut").hide()
+    $("#footerIn").show();
+    $("#footerOut").hide();
 }
+
