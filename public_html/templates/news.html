@@ -19,9 +19,15 @@
         </header>
         
         <section class="sm_container">
+            {% for a in artikel %}
             <div class="row">
-                <h2>Artiklar</h2>
+                <h3>{{"%s" % (a[0])}}</h3><br>
+                <p>{{"%s" % (a[1])}}</p><br>
+                <p>{{"%s" % (a[2])}}</p><br>
+                <p>{{"%s" % (a[3])}}</p><br>
             </div>
+            <hr>
+            {% endfor %}
         </section>
         
         <nav id="openMenu">

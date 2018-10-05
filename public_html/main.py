@@ -9,7 +9,7 @@ app.secret_key = 'randomNyckel'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-conn = psycopg2.connect(dbname="ag6946", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
+conn = psycopg2.connect(dbname="ag6946_mfdb", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
 
 cursor = conn.cursor()
 
@@ -20,7 +20,13 @@ class User(flask_login.UserMixin):
 #ROUTES
 @app.route('/', methods=["GET","POST"])
 def start():
-    return render_template("index.html")
+    #Databas username
+    cursor.execute("select artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
+    artikel = cursor.fetchall()
+    print(artikel)
+    print(type(artikel))
+
+    return render_template("index.html", artikel=artikel)
 
 @app.route('/loggedIn')
 def loggedIn():
@@ -28,7 +34,10 @@ def loggedIn():
 
 @app.route('/news')
 def news():
-    return render_template("news.html")
+    cursor.execute("select artikel.rubrik, artikel.ingress,  artikel.a_text, artikel.datum from artikel order by artikel.datum desc;")
+    artikel = cursor.fetchall()
+    
+    return render_template("news.html", artikel=artikel)
 
 @app.route('/images')
 def images():
@@ -36,6 +45,7 @@ def images():
 
 @app.route('/add')
 def add():
+  
     return render_template("add.html")
 
 @app.route('/settings')
@@ -48,13 +58,13 @@ def settings():
 def logIn():
     
     #Från Form
-    username = str(request.form["username"])
-    password = str(request.form["psw"])
+    username = str(request.form["anv_namn"])
+    password = str(request.form["losenord"])
     #Databas username
-    cursor.execute("select username from users;")
+    cursor.execute("select anv_namn from forfattare;")
     name = cursor.fetchall()
     #Databas Password
-    cursor.execute("select password from users;")
+    cursor.execute("select losenord from forfattare;")
     word = cursor.fetchall()
     
     username_db = loopList(username, name)

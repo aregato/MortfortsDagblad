@@ -20,21 +20,14 @@
         
         <section class="sm_container">
             <div class="row">
+                {% for a in artikel %}
                 <div class="col-sm-2">
-                    <h3>Column 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+                    <h3>{{"%s" % (a[0])}}</h3>
+                    <p>{{"%s" % (a[1])}}</p>
+                    <p>{{"%s" % (a[2])}}</p>
                 </div>
-                <div class="col-sm-2">
-                    <h3>Column 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
-                <div class="col-sm-2">
-                    <h3>Column 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
-                </div>
+                {% endfor %}
+
                 <div class="col-sm-2">
                     <h3>Column 4</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
