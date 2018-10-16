@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : hannes
 */
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
 body{
     background-color: rgba(223, 236, 239, 1) !important;
     height: 100%;
@@ -26,12 +30,24 @@ header > h1{
     font-size: 100px;
 }
 section.sm_container{
-    height: 51vh;
+    
     
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     
+    min-height: 50%;
+
+  /* Equal to he    min-height: 50%;ight of footer */
+  /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+section.container{
+   min-height: 120%;
+
+  /* Equal to he    min-height: 50%;ight of footer */
+  /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: 50px;
 }
 .ri{
     margin-left: 40px;
@@ -113,7 +129,7 @@ main > .row > .col-sm-2 > h3{
 }
 
 footer{
-    height: 16vh;
+    height: 15vh;
     background-color: rgba(220, 53, 69, 0.6) !important;    
 }
 footer > div > .row{

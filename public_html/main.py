@@ -9,7 +9,7 @@ app.secret_key = 'randomNyckel'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-conn = psycopg2.connect(dbname="ag6946_mfdb", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
+conn = psycopg2.connect(dbname="ag6946_mfdbv3", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
 
 cursor = conn.cursor()
 
@@ -41,7 +41,9 @@ def news():
 
 @app.route('/images')
 def images():
-    return render_template("images.html")
+    cursor.execute("select namn, lank from bilder;")
+    images = cursor.fetchall()
+    return render_template("images.html", images=images)
 
 @app.route('/add')
 def add():

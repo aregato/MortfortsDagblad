@@ -18,9 +18,18 @@
             <p>{{wrong}}</p>
         </header>
         
-        <section class="sm_container">
+        <section class="container">
+            <h2>Alla bilder kommer att ligga här inne</h2>
             <div class="row">
-                <h2>Alla bilder kommer att ligga här inne</h2>
+                
+                <hr>
+                <br>
+                {% for a in images %}
+                <div class="col-sm-3">
+                    <h3>{{"%s" % (a[0])}}</h3>
+                    <img src="{{'%s' % (a[1])}}" style="max-width: 260px;" alt="{{'%s' % (a[2])}}">
+                </div>
+                {% endfor %}
             </div>
         </section>
         
