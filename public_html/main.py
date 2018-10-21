@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import Flask, render_template,request,redirect,url_for
 import flask
 import flask_login
@@ -34,9 +35,39 @@ def loggedIn():
 
 @app.route('/news')
 def news():
+
+    
     cursor.execute("select artikel.rubrik, artikel.ingress,  artikel.a_text, artikel.datum from artikel order by artikel.datum desc;")
     artikel = cursor.fetchall()
+
+    cursor.execute("select * from artikel;")
+    art = cursor.fetchall()
+
+    cursor.execute("select * from skrivit;")
+    skrivit = cursor.fetchall()
     
+    cursor.execute("select * from forfattare;")
+    forfattare = cursor.fetchall()
+    
+    cursor.execute("select * from bilder;")
+    bilder = cursor.fetchall()
+
+    forfCount = 0
+    for a in art:
+        for s in skrivit:
+            if a[0] == s[0]:
+                
+                forfCount = forfCount + 1
+                
+                #cursor.execute("select forfattare.namn from forfattare where id=%s".format(s[1]))
+                #forfs = cursor.fetchall()
+
+                print("Artikel: " + a[1] + " Författare:" )
+            else:
+                pass
+    print("Antal kopplingar: " + str(forfCount))
+            
+        
     return render_template("news.html", artikel=artikel)
 
 @app.route('/images')

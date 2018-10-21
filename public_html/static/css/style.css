@@ -49,6 +49,12 @@ section.container{
   /* But also accounting for potential margin-bottom of last child */
     margin-bottom: 50px;
 }
+.artikel > h3{
+
+}
+.artikel > p{
+    
+}
 .ri{
     margin-left: 40px;
 }
