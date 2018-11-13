@@ -103,11 +103,7 @@ def logIn():
     username_db = loopList(username, name)
     password_db = loopList(password ,word)
 
-    right = "Du loggas nu in!"
     wrong = "Fel användarnamn eller lösenord!"
-    print(username_db)
-    print(password_db)
-
     if username_db == True:
         print(right)
         if password_db == True:

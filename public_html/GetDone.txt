@@ -1,0 +1,12 @@
+1. Lägg till bilder som funkar i bildarkiv sidan
+  1.1 Knyt bilder till Artikel
+      1.1.1 Lägg till bilder på nyhter sidan.
+      1.1.2 Lägg till bilder på startsidan.
+2. Lägga till författare i Artikelsidan
+3. Lägg till frontendsida
+  3.1 Lägga till Artikel
+  3.2 Lägga till bild
+  3.3 Lägga till författare
+4. Inställningar sida, för användaren?
+5. Nytt ER diagram. Se mail
+6. Öka författarens tabell enligt önskemål
