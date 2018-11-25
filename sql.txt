@@ -92,18 +92,18 @@ VALUES
 INSERT INTO bilder
 (namn, lank)
 VALUES
-('Painter', 'https://cdn.pixabay.com/photo/2016/01/13/07/05/painter-1137328_960_720.jpg'),
-('Paint', 'https://cdn.pixabay.com/photo/2016/05/15/20/50/paint-1394387_960_720.jpg'),
-('Ballon', 'https://cdn.pixabay.com/photo/2013/04/24/21/17/ballon-106920_960_720.jpg'),
-('Air-Ballon ', 'https://cdn.pixabay.com/photo/2017/08/20/10/35/hot-air-balloon-2661229_960_720.jpg'),
-('Hot-Air-Ballon ', 'https://cdn.pixabay.com/photo/2018/09/02/13/41/hot-air-balloon-3648832_960_720.jpg'),
-('Fish' , 'https://cdn.pixabay.com/photo/2017/06/08/00/24/piranha-2382115_960_720.jpg'),
-('Clouds' , 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Clouds-2292454_960_720.jpg'),
-('Clouds' , 'https://cdn.pixabay.com/photo/2017/05/29/20/44/cloud-2354837_960_720.jpg'),
-('Fast Food' , 'https://cdn.pixabay.com/photo/2018/07/14/21/30/club-sandwich-3538455_960_720.jpg'),
-('Fast Food' , 'https://cdn.pixabay.com/photo/2014/01/23/19/34/french-fries-250641_960_720.jpg'),
-('Tree' , 'https://cdn.pixabay.com/photo/2017/03/21/11/59/trees-2161977_960_720.jpg'),
-('Tree' , 'https://cdn.pixabay.com/photo/2016/12/13/17/11/enchanted-1904610_960_720.jpg')
+('Painter', 'https://images.pexels.com/photos/396159/pexels-photo-396159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Paint', 'https://images.pexels.com/photos/1573827/pexels-photo-1573827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Ballon', 'https://images.pexels.com/photos/68806/pexels-photo-68806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Air-Ballon ', 'https://images.pexels.com/photos/618609/pexels-photo-618609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Hot-Air-Ballon ', 'https://images.pexels.com/photos/428625/balloon-hot-air-balloon-ride-mission-lighthouse-428625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Fish' , 'https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Clouds' , 'https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Clouds' , 'https://images.pexels.com/photos/37728/pexels-photo-37728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Fast Food' , 'https://images.pexels.com/photos/139681/pexels-photo-139681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Fast Food' , 'https://images.pexels.com/photos/1282313/pexels-photo-1282313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Tree' , 'https://images.pexels.com/photos/9198/nature-sky-twilight-grass-9198.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Tree' , 'https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
 ;
 
 INSERT INTO artikel_foto
