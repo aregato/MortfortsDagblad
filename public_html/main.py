@@ -36,39 +36,42 @@ def loggedIn():
 @app.route('/news')
 def news():
 
+    totList = []
 
-    cursor.execute("select artikel.rubrik, artikel.ingress,  artikel.a_text, artikel.datum from artikel order by artikel.datum desc;")
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.a_text, artikel.datum from artikel order by artikel.datum desc;")
     artikel = cursor.fetchall()
 
-    cursor.execute("select * from artikel;")
-    art = cursor.fetchall()
-
-    cursor.execute("select * from skrivit;")
-    skrivit = cursor.fetchall()
-
-    cursor.execute("select * from forfattare;")
-    forfattare = cursor.fetchall()
-
-    cursor.execute("select * from bilder;")
-    bilder = cursor.fetchall()
-
     forfCount = 0
-    for a in art:
-        for s in skrivit:
-            if a[0] == s[0]:
+    for art in artikel:
+        cursor.execute("select b.namn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+        bilder = cursor.fetchall()
 
-                forfCount = forfCount + 1
+        cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
+        forfattare = cursor.fetchall()
 
-                #cursor.execute("select forfattare.namn from forfattare where id=%s".format(s[1]))
-                #forfs = cursor.fetchall()
+        total = {
+            "rubrik": art[1],
+            "ingress": art[2],
+            "text": art[3],
+            "datum": art[4],
+            "forfattare": forfattare,
+            "bilder": bilder
+        }
 
-                print("Artikel: " + a[1] + " Författare:" )
-            else:
-                pass
-    print("Antal kopplingar: " + str(forfCount))
+        totList.append(total)
+
+        #TEST
+    for t in totList:
+        print("")
+        print(t["rubrik"])
+        for f in t["forfattare"]:
+            print(f)
+        for b in t["bilder"]:
+            print(b)
+        print("")
 
 
-    return render_template("news.html", artikel=artikel)
+    return render_template("news.html", totList=totList)
 
 @app.route('/images')
 def images():

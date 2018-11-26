@@ -1,4 +1,4 @@
-psql -U ag6946 -d ag6946_mfdb -h pgserver.mah.se
+psql -U ag6946 -d ag6946_mfdbv3 -h pgserver.mah.se
 jnblid5q
 
 DROP DATABASE IF EXISTS ag6946_mfdbv3;
@@ -122,3 +122,22 @@ VALUES
 (8, 7),
 (8, 8)
 ;
+
+//sql querys
+//Small artikel + forfattare
+select a.rubrik, f.namn, f.efternamn from((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id);
+//Full artikel + författare
+select a.rubrik, a.ingress, a.a_text, a.datum, f.namn, f.efternamn from((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id);
+//Artikel + Bilder
+select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id);
+//Specifik Artikel med bild
+select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id=1;
+
+/FULL
+select a.rubrik, a.ingress, a.a_text, a.datum, f.namn, f.efternamn, b.namn, b.lank from((((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) join bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id);
+
+cursor.execute("select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (a))
+
+cursor.execute("INSERT INTO `notes` (bokning_id, user_id, points, text, rubrik) VALUES (%s, %s, %s, %s, %s)", (bokning_id, user_id, points, text, rubrik))
+
+[('Test Rubrik 4', 'Quidem rerum facilis est et Genegalica perfecto for thabadriubnerat.', 'Quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.', datetime.date(2012, 6, 5))]
