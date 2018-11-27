@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 2018-aug-08, 12:32:20
     Author     : hannes
 */
@@ -21,7 +21,7 @@ body{
 
 header{
     height: 40vh;
-    
+
     background-color: rgba(220, 53, 69, 0.6) !important;
     color: white;
 }
@@ -30,12 +30,12 @@ header > h1{
     font-size: 100px;
 }
 section.sm_container{
-    
-    
+
+
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-    
+
     min-height: 50%;
 
   /* Equal to he    min-height: 50%;ight of footer */
@@ -53,7 +53,7 @@ section.container{
 
 }
 .artikel > p{
-    
+
 }
 .ri{
     margin-left: 40px;
@@ -61,10 +61,16 @@ section.container{
 main > .row > .col-sm-2 > h3{
     text-align: center;
 }
+img.news_image{
+  height: 180px;
+}
+img.start_image{
+  height: 80px;
+}
 #openMenu{
     position: fixed;
     top: 0;
-    
+
     margin-left: 10px;
     margin-top: 10px;
     width: auto;
@@ -75,7 +81,7 @@ main > .row > .col-sm-2 > h3{
     width: 100%;
     position: fixed;
     bottom: 0;
-    
+
     display: none;
 }
 
@@ -104,7 +110,7 @@ main > .row > .col-sm-2 > h3{
     width: 100%;
     position: fixed;
     bottom: 0;
-    
+
     display: none;
 }
 
@@ -136,7 +142,7 @@ main > .row > .col-sm-2 > h3{
 
 footer{
     height: 15vh;
-    background-color: rgba(220, 53, 69, 0.6) !important;    
+    background-color: rgba(220, 53, 69, 0.6) !important;
 }
 footer > div > .row{
     padding-top: 4%;
@@ -156,7 +162,7 @@ footer > div > div > ul > li > a{
     padding: 0px 0px;
     color: black;
     padding: 2px 5px;
-    
+
 }
 footer > div > div > ul > li > a:hover{
     background-color: lightcoral;

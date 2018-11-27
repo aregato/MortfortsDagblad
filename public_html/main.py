@@ -22,12 +22,28 @@ class User(flask_login.UserMixin):
 @app.route('/', methods=["GET","POST"])
 def start():
     #Databas username
-    cursor.execute("select artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
     artikel = cursor.fetchall()
-    print(artikel)
-    print(type(artikel))
 
-    return render_template("index.html", artikel=artikel)
+    totList = []
+
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc;")
+    artik = cursor.fetchall()
+    
+    for art in artikel:
+        cursor.execute("select b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+        bild = cursor.fetchone()
+        print(bild)
+        total = {
+            "rubrik": art[1],
+            "ingress": art[2],
+            "datum": art[3],
+            "bild": bild
+        }
+        totList.append(total)
+    print(totList)
+    
+    return render_template("index.html", artikel=artikel, totList=totList)
 
 @app.route('/loggedIn')
 def loggedIn():
@@ -108,7 +124,6 @@ def logIn():
 
     wrong = "Fel användarnamn eller lösenord!"
     if username_db == True:
-        print(right)
         if password_db == True:
             print("Rätt lösenord!")
             return render_template("loggedIn.html", username=username)

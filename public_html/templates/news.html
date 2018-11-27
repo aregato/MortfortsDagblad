@@ -38,11 +38,11 @@
     <p>{{"%s" % (t["datum"])}}</p>
     <!-- <p>{{"%s" % (t["forfattare"])}}</p> -->
       {% for f in t["forfattare"] %}
-        <p>"{{f[0] + " " + f[1]}}"</p>
-
+        <h5>Skriven av:</h5>
+        <a href="#">{{f[0] + " " + f[1]}}</a>
       {% endfor %}
       {% for b in t["bilder"] %}
-        <p>"{{b[1]}}"</p>
+        <img class="news_image" src="{{b[1]}}" alt="Bild"/>
         <p>"{{b[0]}}"</p>
       {% endfor %}
   </div>
