@@ -5,10 +5,8 @@
 2. Lägga till författare i Artikelsidan
 	2.1 Backend --Klart
 
-4. FrontEnd Design
-	start
-	news
-	bildarkiv
+
+
 
 3. Lägg till frontendsida
   3.1 Lägga till Artikel
@@ -20,7 +18,15 @@
   3.2 Lägga till bild
   3.3 Lägga till författare
 
+
+
+3. Kunna trycka in på en Artikel och se allt den innehåller.
+
+
 4. Inställningar sida, för användaren?
+
 
 5. Nytt ER diagram. Se mail
 	5.1 Öka författarens tabell enligt önskemål
+
+6. FrontEnd Design Allt

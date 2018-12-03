@@ -35,7 +35,7 @@ section.sm_container{
     width: 90%;
     margin-left: auto;
     margin-right: auto;
-
+    padding-bottom: 100px;
     min-height: 50%;
 
   /* Equal to he    min-height: 50%;ight of footer */
@@ -167,6 +167,7 @@ footer > div > div > ul > li > a{
 footer > div > div > ul > li > a:hover{
     background-color: lightcoral;
 }
+
 .tight{
     margin-left: 500px;
 }

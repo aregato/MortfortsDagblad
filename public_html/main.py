@@ -29,7 +29,7 @@ def start():
 
     cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc;")
     artik = cursor.fetchall()
-    
+
     for art in artikel:
         cursor.execute("select b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
         bild = cursor.fetchone()
@@ -42,7 +42,7 @@ def start():
         }
         totList.append(total)
     print(totList)
-    
+
     return render_template("index.html", artikel=artikel, totList=totList)
 
 @app.route('/loggedIn')
@@ -97,8 +97,16 @@ def images():
 
 @app.route('/add')
 def add():
+    cursor.execute("select namn, efternamn, id from forfattare;")
+    forfattare = cursor.fetchall()
 
-    return render_template("add.html")
+    cursor.execute("select namn, lank, id from bilder;")
+    bilder = cursor.fetchall()
+
+    cursor.execute("select id, rubrik from artikel;")
+    artikel = cursor.fetchall()
+
+    return render_template("add.html", forfattare=forfattare, bilder=bilder, artikel=artikel)
 
 @app.route('/settings')
 def settings():
