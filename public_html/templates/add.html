@@ -19,147 +19,229 @@
 
   <section class="sm_container">
     <div class="row">
-
       <div class="addArticle">
         <h2>Lägg till artikel</h2>
-        <p>The form below contains a textarea for comments:</p>
-        <form>
-          <div class="form-group">
-            <label for="rubrik">Rubrik:</label>
-            <input type="text" class="form-control" id="rubrik">
-            <label for="ingress">Ingress:</label>
-            <textarea class="form-control" rows="2" id="ingress"></textarea>
-            <label for="text">Text:</label>
-            <textarea class="form-control" rows="5" id="text"></textarea>
+        <p>Fyll i alla fält och tryck sedan på "Lägg till Artikel", för att ladda upp den skapade artiklen.</p>
+        <form onsubmit="return checkForm(this);" action="/addArticle" method="POST">
+
+          <label for="rubrik">Rubrik:</label>
+          <input type="text" class="form-control" id="rubrik" name="rubrik">
+          <label for="ingress">Ingress:</label>
+          <textarea class="form-control" rows="2" id="ingress" name="ingress"></textarea>
+          <label for="text">Text:</label>
+          <textarea class="form-control" rows="5" id="text" name="a_text"></textarea>
+          <label class="date" for="date">Datum:</label>
+          <input class="date" id="date" type="date" name="date">
+
+          <!-- Add artikel modal Modal -->
+          <div class="modal fade" id="addArtModel" role="dialog">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Spara för att ladda upp artikel</h4>
+                </div>
+                <div class="modal-footer">
+                  <!-- Lägger till artikel -->
+                  <button type="submit" class="btn btn-success">Spara</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- <select>
-            <option value="" selected disabled hidden>Välj författare</option>
-            {% for f in forfattare %}
-            <option value="{{'%s' % (f[0])}}">{{"%s" % (f[0])}} {{"%s" % (f[1])}}</option>
-            {% endfor %}
+          <option value="" selected disabled hidden>Välj författare</option>
+          {% for f in forfattare %}
+          <option value="{{'%s' % (f[0])}}">{{"%s" % (f[0])}} {{"%s" % (f[1])}}</option>
+          {% endfor %}
           </select>
           <button>Lägg till författare</button>
           <div class="form-group">
-            <textarea class="form-control" rows="2" id="valdForfattare"></textarea>
+          <textarea class="form-control" rows="2" id="valdForfattare"></textarea>
           </div>
           <select>
-            <option value="" selected disabled hidden>Välj bilder</option>
-            {% for b in bilder %}
-            <option value="{{"%s" % (b[1])}}">{{"%s" % (b[0])}}</option>
-            {% endfor %}
+          <option value="" selected disabled hidden>Välj bilder</option>
+          {% for b in bilder %}
+          <option value="{{"%s" % (b[1])}}">{{"%s" % (b[0])}}</option>
+          {% endfor %}
           </select>
           <button>Lägg till bilder</button>
           <div class="form-group">
-            <textarea class="form-control" rows="2" id="valdaBilder"></textarea>
+          <textarea class="form-control" rows="2" id="valdaBilder"></textarea>
           </div> -->
-          <label for="date">Datum:</label>
-          <input id="date" type="date">
-        </form>
-        <br>
-        <button id="ArticleButton" class="btn btn-success">Lägg till Artikel</button>
-        <button class="btn btn-danger">Rensa</button>
-      </div>
-    </div>
 
-
-    <hr>
-
-
-
-    <div class="row">
-      <div class="addArticle">
-        <h2>Lägg till författare</h2>
-        <p>The form below contains a textarea for comments:</p>
-        <form>
-          <div class="form-group">
-            <label for="namn">Namn:</label>
-            <input type="text" class="form-control" id="namn">
-            <label for="efternamn">Efternamn:</label>
-            <input type="text" class="form-control" id="efternamn">
-            <label for="email">E-mail:</label>
-            <input type="text" class="form-control" id="email">
-            <label for="telefon">Telefon</label>
-            <input type="text" class="form-control" id="telefon">
-            <label for="telefon">Lösenord</label>
-            <input type="password" class="form-control" id="losenord">
-          </div>
-        </form>
-        <button id="addForfButton" class="btn btn-success">Lägg till Författare</button>
-        <button class="btn btn-danger">Rensa</button>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <div class="addArticle">
-        <h2>Lägg till bild</h2>
-        <p>The form below contains a textarea for comments:</p>
-        <label for="bildnamn">Ange bildens namn</label>
-        <input type="text" class="form-control" id="bildnamn">
-        <label for="bild">Ange bildadress</label>
-        <input type="text" class="form-control" id="bild">
-        <form>
-          <div class="form-group">
-          </div>
-        </form>
-        <button id="bildButton" class="btn btn-success">Lägg till Bild</button>
-        <button class="btn btn-danger">Rensa</button>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <div class="addArticle">
-        <h2>Lägg till författare till artikel</h2>
-        <p>The form below contains a textarea for comments:</p>
-        <form>
-          <div class="form-group">
-            <select id="artforf">
-              <option value="" selected disabled hidden>Välj artikel</option>
-              {% for ar in artikel %}
-              <option value="{{'%s' % (ar[0])}}">{{"%s" % (ar[1])}}</option>
-              {% endfor %}
-            </select>
-            <select id="forfart">
-              <option value="" selected disabled hidden>Välj författare</option>
-              {% for f in forfattare %}
-              <option value="{{'%s' % (f[2])}}">{{"%s" % (f[0])}} {{"%s" % (f[1])}}</option>
-              {% endfor %}
-            </select>
-          </div>
-        </form>
-        <button id="kopplaForf" class="btn btn-success">Koppla</button>
-      </div>
-    </div>
-    <hr>
-
-    <div class="row">
-      <div class="addArticle">
-        <h2>Lägg till bild till artikel</h2>
-        <p>The form below contains a textarea for comments:</p>
-        <form>
-          <div class="form-group">
-            <select id="artbild">
-              <option value="" selected disabled hidden>Välj artikel</option>
-              {% for a in artikel %}
-              <option value="{{'%s' % (a[0])}}">{{"%s" % (a[1])}}</option>
-              {% endfor %}
-            </select>
-            <select id="bildart">
-              <option value="" selected disabled hidden>Välj bilder</option>
-              {% for b in bilder %}
-              <option value="{{'%s' % (b[2])}}">{{"%s" % (b[0])}}</option>
-              {% endfor %}
-            </select>
-          </div>
-        </form>
-        <button id="kopplaBild" class="btn btn-success">Koppla</button>
-      </div>
-    </div>
-
+    </form>
+    <br>
+    <button id="ArticleButton" class="btn btn-success">Lägg till Artikel</button>
+    <button class="btn btn-danger">Rensa</button>
   </div>
+
+</div>
+
+
+<hr>
+
+
+
+<div class="row">
+  <div class="addArticle">
+    <h2>Lägg till författare</h2>
+    <p>Lägg till en författare till databasen genom att fylla i alla uppgifter. Tryck sedan "Lägg till Författare" för att ladda upp till databasen.</p>
+    <p>För att få knyta personen till en artikel behöver man koppla den till en sådan lite längre ner på sidan.</p>
+    <form  onsubmit="return checkForm(this);" action="/addAuthor" method="POST">
+      <label for="namn">Namn:</label>
+      <input type="text" class="form-control" id="namn" name="namn">
+      <label for="efternamn">Efternamn:</label>
+      <input type="text" class="form-control" id="efternamn" name="efternamn">
+      <label for="email">E-mail:</label>
+      <input type="text" class="form-control" id="email" name="email">
+      <label for="telefon">Telefon</label>
+      <input type="text" class="form-control" id="telefon" name="telefon">
+      <label for="telefon">Lösenord</label>
+      <input type="password" class="form-control" id="losenord" name="losenord">
+      <!-- Add forf modal Modal -->
+      <div class="modal fade" id="addForfModel" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Spara för att lägga till författare</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Spara</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+    <button id="addForfButton" class="btn btn-success">Lägg till Författare</button>
+    <button class="btn btn-danger">Rensa</button>
+  </div>
+
+
+
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="addArticle">
+    <h2>Lägg till bild</h2>
+    <p>Ladda upp en bild till databasen genom att länka en bild genom en bildadress och fyll i ett namn. Tryck sedan lägg till bild för att ladda upp den till databasen.</p>
+    <p>För att få den i en artikel behöver man koppla den till en sådan lite längre ner på sidan.</p>
+    <form  onsubmit="return checkForm(this);" action="/addImage" method="POST">
+      <label for="bildnamn">Ange bildens namn</label>
+      <input type="text" class="form-control" id="bildnamn" name="bildnamn">
+      <label for="bild">Ange bildadress</label>
+      <input type="text" class="form-control" id="bild" name="bild">
+      <!-- Add Bild modal Modal -->
+      <div class="modal fade" id="addBildModel" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Spara för att lägga till bilden</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Spara</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <button id="bildButton" class="btn btn-success">Lägg till Bild</button>
+    <button class="btn btn-danger">Rensa</button>
+  </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="addArticle">
+    <h2>Lägg till författare till artikel</h2>
+    <p>Ange vilken bild som ska höra till vilken artikel.</p>
+    <form onsubmit="return checkForm(this);" action="/connectForf" method="POST">
+      <div class="form-group">
+        <select id="artforf" name="art_id">
+          <option value="" selected disabled hidden>Välj artikel</option>
+          {% for ar in artikel %}
+          <option value="{{'%s' % (ar[0])}}">{{"%s" % (ar[1])}}</option>
+          {% endfor %}
+        </select>
+        <select id="forfart" name="forf_id">
+          <option value="" selected disabled hidden>Välj författare</option>
+          {% for f in forfattare %}
+          <option value="{{'%s' % (f[2])}}">{{"%s" % (f[0])}} {{"%s" % (f[1])}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="modal fade" id="connectForfModel" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Spara för att koppla författaren</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Spara</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+    <button id="kopplaForf" class="btn btn-success">Koppla</button>
+  </div>
+
+</div>
+<hr>
+
+<div class="row">
+  <div class="addArticle">
+    <h2>Lägg till bild till artikel</h2>
+    <p>Ange vilken bild som ska höra till vilken artikel</p>
+    <form onsubmit="return checkForm(this);" action="/connectImage" method="POST">
+      <div class="form-group">
+        <select id="artbild" name="artbild">
+          <option value="" selected disabled hidden>Välj artikel</option>
+          {% for a in artikel %}
+          <option value="{{'%s' % (a[0])}}">{{"%s" % (a[1])}}</option>
+          {% endfor %}
+        </select>
+        <select id="bildart" name="bildart">
+          <option value="" selected disabled hidden>Välj bilder</option>
+          {% for b in bilder %}
+          <option value="{{'%s' % (b[2])}}">{{"%s" % (b[0])}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="modal fade" id="connectBildModel" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Spara för att koppla bilden</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Spara</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </form>
+    <button id="kopplaBild" class="btn btn-success" >Koppla</button>
+  </div>
+
+</div>
+
+</div>
 </section>
 
 <nav id="openMenu">

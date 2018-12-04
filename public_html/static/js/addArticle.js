@@ -1,9 +1,13 @@
 $(function(){
+
   $( "#ArticleButton" ).click(function(){addArticles();});
+
   $( "#addForfButton" ).click(function(){addForfs();});
+  $("#bildButton").click(function(){addBild();});
+
   $( "#kopplaForf" ).click(function(){connectForf();});
   $( "#kopplaBild" ).click(function(){connectBild();});
-  $("#bildButton").click(function(){addBild();});
+
 });
 
 
@@ -24,7 +28,7 @@ function addArticles(){
   }else if(date == ""){
     console.log("Datum saknas");
   }else{
-    console.log("Lägg till:", rubrik);
+    $("#addArtModel").modal();
   }
 };
 
@@ -47,6 +51,7 @@ function addForfs(){
     console.log("Lösenord saknas");
   }else{
     console.log("Lägg till:", email);
+    $("#addForfModel").modal();
   }
 };
 
@@ -59,19 +64,33 @@ function addBild(){
     console.log("Efternamn saknas");
   }else{
     console.log("Lägger till bild")
+    $("#addBildModel").modal();
   }
 }
 
 function connectForf(){
   let af = $("#artforf").val();
   let fa = $("#forfart").val();
-
-  console.log(af, fa);
+  if(af == null){
+    console.log("Saknar artikel koppling")
+  }else if(fa == null){
+    console.log("Saknar forfattar koppling")
+  }else{
+    console.log(af, fa);
+    $("#connectForfModel").modal();
+  }
 };
 
 function connectBild(){
   let ab = $("#artbild").val();
   let ba = $("#bildart").val();
 
-  console.log(ab, ba);
+  if(ab == null){
+    console.log("Saknar artikel koppling")
+  }else if(ba == null){
+    console.log("Saknar bild koppling")
+  }else{
+    console.log(ab, ba);
+    $("#connectBildModel").modal();
+  }
 };

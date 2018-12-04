@@ -31,7 +31,7 @@ PRIMARY KEY (id)
 CREATE TABLE bilder
 (
 id SERIAL,
-namn varchar(50),
+bildnamn varchar(50),
 lank varchar(200),
 PRIMARY KEY (id)
 );
@@ -54,11 +54,11 @@ FOREIGN KEY (artikel_id) references artikel(id),
 FOREIGN KEY (bild_id) references bilder(id)
 );
 
-INSERT INTO forfattare 
-(anv_namn, losenord, namn, efternamn, telefon) 
-VALUES 
+INSERT INTO forfattare
+(anv_namn, losenord, namn, efternamn, telefon)
+VALUES
 ('Test', 'Test', 'Testet', 'Testsson', '0711111111'),
-('hannes', 'hannes', 'Hannes', 'Linnér', '0735018846'),
+('hannes', 'hannes', 'Hannes', 'Linnï¿½r', '0735018846'),
 ('jossan', 'jossan', 'Josefine', 'Vesterinen', '0745836233'),
 ('carl', 'calle', 'Carlof', 'Stensson', '0743332425');
 
@@ -71,8 +71,8 @@ VALUES
 ('Test Rubrik 4', 'Quidem rerum facilis est et Genegalica perfecto for thabadriubnerat.','Quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.', '2012-06-05'),
 ('Test Rubrik 5', 'Est et expeditaEt',' Harum quidem rerum facilis est et expedita distinctio. excepturi sint occaecati cupiditate non provident,  deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2018-10-07'),
 ('Test Rubrik 6', 'Expedita distinctio.','Eligendi optio quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2015-01-05'),
-('Stora luftballonger i luften!', 'Äntligen kan man se de stora luftballongerna. Inte mist i luften.','Nu är dem där uppe. Svävar omkring i luften, luftballongerna alltså. Som ni ser på bilderna svävar dom i luften och kallas därför för luftballonger.', '2018-10-15'),
-('Vita moln', 'Idag har man sett ett antal vita moln','Vilken dag det har varit. Ett helt antal vita moln har sett idag högt över marken. Molnen svpte förbi i en vit färg på den blå himlen. Det antal av molnen var vita och såg ut som dessa på bilderna.', '2018-10-11')
+('Stora luftballonger i luften!', 'ï¿½ntligen kan man se de stora luftballongerna. Inte mist i luften.','Nu ï¿½r dem dï¿½r uppe. Svï¿½var omkring i luften, luftballongerna alltsï¿½. Som ni ser pï¿½ bilderna svï¿½var dom i luften och kallas dï¿½rfï¿½r fï¿½r luftballonger.', '2018-10-15'),
+('Vita moln', 'Idag har man sett ett antal vita moln','Vilken dag det har varit. Ett helt antal vita moln har sett idag hï¿½gt ï¿½ver marken. Molnen svpte fï¿½rbi i en vit fï¿½rg pï¿½ den blï¿½ himlen. Det antal av molnen var vita och sï¿½g ut som dessa pï¿½ bilderna.', '2018-10-11')
 ;
 
 INSERT INTO skrivit
@@ -123,10 +123,11 @@ VALUES
 (8, 8)
 ;
 
+
 //sql querys
 //Small artikel + forfattare
 select a.rubrik, f.namn, f.efternamn from((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id);
-//Full artikel + författare
+//Full artikel + fï¿½rfattare
 select a.rubrik, a.ingress, a.a_text, a.datum, f.namn, f.efternamn from((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id);
 //Artikel + Bilder
 select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id);

@@ -34,16 +34,16 @@
   {% for t in totList %}
   <div class="artikel">
     <h3>{{"%s" % (t["rubrik"])}}</h3>
-    <p>{{"%s" % (t["text"])}}</p>
+    <p>{{"%s" % (t["ingress"])}}</p>
+    {% for b in t["bilder"] %}
+    <img class="news_image" src="{{b[1]}}" alt="{{b[0]}}"/>
+    {% endfor %}
     <p>{{"%s" % (t["datum"])}}</p>
     <!-- <p>{{"%s" % (t["forfattare"])}}</p> -->
-    <h5>Skriven av:</h5>
+    <p>{{"%s" % (t["text"])}}</p>
+    <h5>Författare:</h5>
     {% for f in t["forfattare"] %}
-    <a href="#">{{f[0] + " " + f[1]}}</a>
-    {% endfor %}
-    {% for b in t["bilder"] %}
-    <img class="news_image" src="{{b[1]}}" alt="Bild"/>
-    <p>"{{b[0]}}"</p>
+    <a href="#">{{f[0] + " " + f[1]}},</a>
     {% endfor %}
   </div>
   <hr>
