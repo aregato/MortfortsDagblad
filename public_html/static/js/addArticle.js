@@ -56,12 +56,13 @@ function addForfs(){
 };
 
 function addBild(){
-  let namn = $("#bildnamn").val();
   let bild = $("#bild").val();
-  if(namn == ""){
-    console.log("Namn saknas");
-  }else if(bild == ""){
-    console.log("Efternamn saknas");
+  let bnamn = $("#bnamn").val();
+  
+  if(bild == ""){
+    console.log("Bild länk saknas");
+  }else if(bnamn == ""){
+    console.log("Bildnamn saknas")
   }else{
     console.log("Lägger till bild")
     $("#addBildModel").modal();
@@ -69,9 +70,10 @@ function addBild(){
 }
 
 function connectForf(){
+
   let af = $("#artforf").val();
   let fa = $("#forfart").val();
-  if(af == null){
+   if(af == null){
     console.log("Saknar artikel koppling")
   }else if(fa == null){
     console.log("Saknar forfattar koppling")
@@ -84,8 +86,10 @@ function connectForf(){
 function connectBild(){
   let ab = $("#artbild").val();
   let ba = $("#bildart").val();
-
-  if(ab == null){
+let bildnamn = $("#bildnamn").val();
+if(bildnamn == ""){
+  console.log("Saknar bildnamn")
+}else if(ab == null){
     console.log("Saknar artikel koppling")
   }else if(ba == null){
     console.log("Saknar bild koppling")

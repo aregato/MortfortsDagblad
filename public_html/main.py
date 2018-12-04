@@ -29,19 +29,18 @@ def start():
 
     for art in artikel:
         try:
-            cursor.execute("select b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            cursor.execute("select b.lank, p.bildnamn from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bild = cursor.fetchone()
-            print(type(bild))
-            print(bild)
         except:
             print("Finns ingen bild")
             bild = ("Ingen")
+
 
         total = {
             "rubrik": art[1],
             "ingress": art[2],
             "datum": art[3],
-            "bild": bild
+            "bilden": bild,
         }
         totList.append(total)
 
@@ -62,15 +61,13 @@ def news():
     for art in artikel:
         #Lägg till , p.bildtext efter selecten
         try:
-            cursor.execute("select b.namn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
             bild = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
-            print(forfattare)
-            print(type(forfattare))
 
         except:
             forfattare = ["Ingen", "Forfattare"]
@@ -88,7 +85,7 @@ def news():
 
 @app.route('/images')
 def images():
-    cursor.execute("select namn, lank from bilder;")
+    cursor.execute("select lank from bilder;")
     images = cursor.fetchall()
     return render_template("images.html", images=images)
 
@@ -97,7 +94,7 @@ def add():
     cursor.execute("select namn, efternamn, id from forfattare;")
     forfattare = cursor.fetchall()
 
-    cursor.execute("select namn, lank, id from bilder;")
+    cursor.execute("select lank, bnamn, id from bilder;")
     bilder = cursor.fetchall()
 
     cursor.execute("select id, rubrik from artikel;")
@@ -159,15 +156,13 @@ def addArticle():
 
     for art in artikel:
         try:
-            cursor.execute("select b.namn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
             bild = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
-            print(forfattare)
-            print(type(forfattare))
 
         except:
             forfattare = ["Ingen", "Forfattare"]
@@ -186,16 +181,16 @@ def addArticle():
 
 @app.route('/addImage', methods=["POST"])
 def addImage():
-    namn = str(request.form["bildnamn"])
+    bnamn = str(request.form["bnamn"])
     lank = str(request.form["bild"])
 
     try:
-        cursor.execute("INSERT INTO bilder (namn, lank)VALUES(%s, %s)", (namn, lank))
+        cursor.execute("INSERT INTO bilder (bnamn, lank) VALUES(%s, %s)", (bnamn, lank))
         conn.commit()
     except:
         print("Error till db!")
 
-    cursor.execute("select namn, lank from bilder;")
+    cursor.execute("select lank from bilder;")
     images = cursor.fetchall()
 
     return render_template("images.html",images=images)
@@ -218,7 +213,7 @@ def addAuthor():
     cursor.execute("select namn, efternamn, id from forfattare;")
     forfattare = cursor.fetchall()
 
-    cursor.execute("select namn, lank, id from bilder;")
+    cursor.execute("select bnamn, lank, id from bilder;")
     bilder = cursor.fetchall()
 
     cursor.execute("select id, rubrik from artikel;")
@@ -245,16 +240,15 @@ def connectForf():
     artikel = cursor.fetchall()
 
     for art in artikel:
+        #Lägg till , p.bildtext efter selecten
         try:
-            cursor.execute("select b.namn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
             bild = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
-            print(forfattare)
-            print(type(forfattare))
 
         except:
             forfattare = ["Ingen", "Forfattare"]
@@ -274,10 +268,10 @@ def connectForf():
 def connectImage():
     art_id = request.form["artbild"]
     bild_id = request.form["bildart"]
-
+    bildnamn = request.form["bildnamn"]
 
     try:
-        cursor.execute("INSERT INTO artikel_foto (artikel_id, bild_id)VALUES(%s, %s)", (art_id, bild_id))
+        cursor.execute("INSERT INTO artikel_foto (artikel_id, bild_id, bildnamn)VALUES(%s, %s, %s)", (art_id, bild_id, bildnamn))
         conn.commit()
     except:
         print("Error till db!")
@@ -288,16 +282,15 @@ def connectImage():
     artikel = cursor.fetchall()
 
     for art in artikel:
+        #Lägg till , p.bildtext efter selecten
         try:
-            cursor.execute("select b.namn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
             bild = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
-            print(forfattare)
-            print(type(forfattare))
 
         except:
             forfattare = ["Ingen", "Forfattare"]

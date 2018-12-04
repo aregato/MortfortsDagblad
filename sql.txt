@@ -31,7 +31,7 @@ PRIMARY KEY (id)
 CREATE TABLE bilder
 (
 id SERIAL,
-bildnamn varchar(50),
+bnamn varchar(50),
 lank varchar(200),
 PRIMARY KEY (id)
 );
@@ -49,6 +49,7 @@ CREATE TABLE artikel_foto
 (
 artikel_id SERIAL,
 bild_id SERIAL,
+bildnamn varchar(50),
 PRIMARY KEY (artikel_id, bild_id),
 FOREIGN KEY (artikel_id) references artikel(id),
 FOREIGN KEY (bild_id) references bilder(id)
@@ -90,37 +91,37 @@ VALUES
 (8,2);
 
 INSERT INTO bilder
-(namn, lank)
+(bnamn, lank)
 VALUES
-('Painter', 'https://images.pexels.com/photos/396159/pexels-photo-396159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Paint', 'https://images.pexels.com/photos/1573827/pexels-photo-1573827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Ballon', 'https://images.pexels.com/photos/68806/pexels-photo-68806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Air-Ballon ', 'https://images.pexels.com/photos/618609/pexels-photo-618609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Hot-Air-Ballon ', 'https://images.pexels.com/photos/428625/balloon-hot-air-balloon-ride-mission-lighthouse-428625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Fish' , 'https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Clouds' , 'https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Clouds' , 'https://images.pexels.com/photos/37728/pexels-photo-37728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Fast Food' , 'https://images.pexels.com/photos/139681/pexels-photo-139681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Fast Food' , 'https://images.pexels.com/photos/1282313/pexels-photo-1282313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Tree' , 'https://images.pexels.com/photos/9198/nature-sky-twilight-grass-9198.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
-('Tree' , 'https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
+('Painter','https://images.pexels.com/photos/396159/pexels-photo-396159.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Paint','https://images.pexels.com/photos/1573827/pexels-photo-1573827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Ballon','https://images.pexels.com/photos/68806/pexels-photo-68806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Ballons','https://images.pexels.com/photos/618609/pexels-photo-618609.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Fish','https://images.pexels.com/photos/428625/balloon-hot-air-balloon-ride-mission-lighthouse-428625.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Mr Skwp','https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Satan','https://images.pexels.com/photos/158163/clouds-cloudporn-weather-lookup-158163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Small plp','https://images.pexels.com/photos/37728/pexels-photo-37728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Ghost','https://images.pexels.com/photos/139681/pexels-photo-139681.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Adrian','https://images.pexels.com/photos/1282313/pexels-photo-1282313.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('KOl','https://images.pexels.com/photos/9198/nature-sky-twilight-grass-9198.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
+('Uppe','https://images.pexels.com/photos/762679/pexels-photo-762679.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')
 ;
 
 INSERT INTO artikel_foto
-(artikel_id, bild_id)
+(artikel_id, bild_id, bildnamn)
 VALUES
-(1, 1),
-(2, 2),
-(3, 9),
-(4, 10),
-(5, 11),
-(6, 12),
-(6, 6),
-(7, 3),
-(7, 4),
-(7, 5),
-(8, 7),
-(8, 8)
+(1, 1, 'Test'),
+(2, 2, 'En bild text'),
+(3, 9, 'En annan text.'),
+(4, 10, 'Jag har en tes'),
+(5, 11, 'Vart kommer gud ifrån?'),
+(6, 12, 'Här kan man se.'),
+(6, 6, 'Verkligheten'),
+(7, 3, 'Finns det?'),
+(7, 4, 'Mat bilden inte.'),
+(7, 5, 'Vi får se hur det kommer att gå'),
+(8, 7, 'Här är en text'),
+(8, 8, 'Sista bilden')
 ;
 
 

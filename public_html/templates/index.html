@@ -31,8 +31,8 @@
                 {% for t in totList %}
                 <div class="col-sm-2">
                     <h3>{{"%s" % (t["rubrik"])}}</h3>
+                    <img class="start_image" src="{{'%s' % (t['bilden'][0])}}" alt="{{'%s' % (t['bilden'][0])}}"/>
                     <p>{{"%s" % (t["ingress"])}}</p>
-                    <img class="start_image" src="{{'%s' % (t['bild'])}}" alt="Bild"/>
                     <p>{{"%s" % (t["datum"])}}</p>
                 </div>
                 {% endfor %}

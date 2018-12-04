@@ -132,10 +132,10 @@
     <p>Ladda upp en bild till databasen genom att länka en bild genom en bildadress och fyll i ett namn. Tryck sedan lägg till bild för att ladda upp den till databasen.</p>
     <p>För att få den i en artikel behöver man koppla den till en sådan lite längre ner på sidan.</p>
     <form  onsubmit="return checkForm(this);" action="/addImage" method="POST">
-      <label for="bildnamn">Ange bildens namn</label>
-      <input type="text" class="form-control" id="bildnamn" name="bildnamn">
       <label for="bild">Ange bildadress</label>
       <input type="text" class="form-control" id="bild" name="bild">
+      <label for="bildnamn">Ange passande namn:</label>
+      <input type="text" class="form-control" id="bnamn" name="bnamn">
       <!-- Add Bild modal Modal -->
       <div class="modal fade" id="addBildModel" role="dialog">
         <div class="modal-dialog">
@@ -219,6 +219,9 @@
           <option value="{{'%s' % (b[2])}}">{{"%s" % (b[0])}}</option>
           {% endfor %}
         </select>
+        <br>
+        <label for="bildnamn">Ange passande bildtext:</label>
+        <input type="text" class="form-control" id="bildnamn" name="bildnamn">
       </div>
       <div class="modal fade" id="connectBildModel" role="dialog">
         <div class="modal-dialog">
