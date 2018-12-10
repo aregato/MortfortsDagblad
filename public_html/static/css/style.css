@@ -70,14 +70,26 @@ form > label{
 .ri{
     margin-left: 40px;
 }
-main > .row > .col-sm-2 > h3{
-    text-align: center;
+.clicker{
+  border: 1px solid red;
+  padding: 10px;
+}
+.clicker:hover{
+  padding: 12px;
+  cursor: zoom-in;
+}
+.clicker > h3{
+  font-size: 40px;
+  text-align: center;
+  
+
 }
 img.news_image{
   height: 180px;
 }
 img.start_image{
-  height: 80px;
+  height: 100%;
+  width: 100%;
 }
 #losenord{
   margin-bottom: 25px;

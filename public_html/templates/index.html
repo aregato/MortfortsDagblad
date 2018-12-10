@@ -12,7 +12,11 @@
         <link href="../static/css/style.css" rel="stylesheet">
     </head>
     <body>
-
+    <script>
+      {% for t in totList %}
+        console.log("{{'%s' % (t['rubrik'])}}")
+      {% endfor %}
+    </script>
         <header class="jumbotron text-center">
             <h1>Mörtfors dagblad v0.1</h1>
             <p>{{wrong}}</p>
@@ -29,12 +33,45 @@
                 </div>
                 {% endfor %} -->
                 {% for t in totList %}
-                <div class="col-sm-2">
+                <div  class="col-sm-2">
+                  <div class="clicker" data-toggle="modal" data-target="{{'%s' % (t['mId'])}}">
                     <h3>{{"%s" % (t["rubrik"])}}</h3>
                     <img class="start_image" src="{{'%s' % (t['bilden'][0])}}" alt="{{'%s' % (t['bilden'][0])}}"/>
                     <p>{{"%s" % (t["ingress"])}}</p>
                     <p>{{"%s" % (t["datum"])}}</p>
+                    </div>
                 </div>
+
+                <!-- ARTIKEL Modal -->
+                <div id="{{'%s' % (t['modalId'])}}" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                              <h3>{{"%s" % (t["rubrik"])}}</h3>
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>{{"%s" % (t["ingress"])}}</h6>
+                                <p>{{"%s" % (t["ingress"])}}</p>
+                                {% for b in t["bilder"] %}
+                                <img class="news_image" src="{{b[1]}}" alt="{{b[0]}}"/>
+                                {% endfor %}
+                            </div>
+                            <div class="modal-footer">
+                                {% for f in t["forfattare"] %}
+                                  <p href="#">{{f[0] + " " + f[1]}},</p>
+                                {% endfor %}
+                                <!-- Denna ska leda till unik artikel sida...... som man kan kommentera på... -->
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Visa mer</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
                 {% endfor %}
             </div>
         </section>
@@ -93,7 +130,7 @@
 
         </nav>
 
-        <!-- Modal -->
+        <!-- Login Modal -->
         <div id="logInModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 

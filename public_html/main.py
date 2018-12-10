@@ -35,12 +35,32 @@ def start():
             print("Finns ingen bild")
             bild = ("Ingen")
 
+        mid =  "#modal" + str(art[0])
+        modalId = "modal" + str(art[0])
+
+        try:
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            bilder = cursor.fetchall()
+        except:
+            bilder = ("Ingen")
+
+        try:
+            cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
+            forfattare = cursor.fetchall()
+
+        except:
+            forfattare = ["Ingen", "Forfattare"]
 
         total = {
             "rubrik": art[1],
             "ingress": art[2],
             "datum": art[3],
             "bilden": bild,
+            "bilder": bilder,
+            "id": art[0],
+            "mId": mid,
+            "modalId":modalId,
+            "forfattare": forfattare,
         }
         totList.append(total)
 
@@ -64,7 +84,7 @@ def news():
             cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
-            bild = ("Ingen")
+            bilder = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
@@ -305,6 +325,27 @@ def connectImage():
         totList.append(total)
 
     return render_template("news.html", totList=totList)
+
+
+
+# Sida där de olika anteckningarna visas.
+@app.route('/artikel/<artikel_id>')
+def artikel(artikel_id):
+    # Hämtar vilken lektion det var man klickade in på.
+    sql_lecture = "SELECT kurskod, moment, datum FROM artikel WHERE id = %s"
+    cursor.execute (sql_lecture, [artikel_id])
+    artikel = cursor.fetchall()
+
+    # Hämtar alla anteckningar för den nuvarande föreläsningen.
+    sql_notes = "SELECT notes.rubrik, notes.text, notes.points, notes.user_id, users.name, notes.note_id, notes.path FROM notes INNER JOIN users ON notes.user_id = users.id WHERE notes.bokning_id = %s ORDER BY points DESC, note_id DESC"
+    cursor2.execute (sql_notes, [artikel_id])
+    notes = cursor2.fetchall()
+
+
+    return render_template("note.html", artikel=artikel, notes=notes, artikel_id=artikel_id)
+
+
+
 
 #FUNCTIONS
 def loopList(key, words):
