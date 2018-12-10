@@ -1,19 +1,19 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 $(function(){
-    check_logged_in(); 
+    check_logged_in();
     $(".tight").click(function(){if_logout();});
-   
+
 });
 
-function check_logged_in(){  
+function check_logged_in(){
     var logged_user = localStorage.getItem('user');
-    
+
     console.log(logged_user);
-    
+
     if(logged_user == "undefined"){
         console.log("LocalStorage är tomt.");
         if_logout();
@@ -31,12 +31,13 @@ function if_logged_in(){
 
     $("#footerIn").hide();
     $("#footerOut").show();
+    $(".delComment").show();
 }
 function if_logout(){
     console.log("Loggar ut");
-    
+
     localStorage.removeItem('user');
     $("#footerIn").show();
     $("#footerOut").hide();
+    $(".delComment").hide();
 }
-

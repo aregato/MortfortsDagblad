@@ -3,6 +3,7 @@ from flask import Flask, render_template,request,redirect,url_for
 import flask
 import flask_login
 import psycopg2
+import datetime
 
 app = flask.Flask(__name__)
 app.secret_key = 'randomNyckel'
@@ -37,6 +38,8 @@ def start():
 
         mid =  "#modal" + str(art[0])
         modalId = "modal" + str(art[0])
+        lank = "/artikel/" + str(art[0])
+
 
         try:
             cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
@@ -51,16 +54,17 @@ def start():
         except:
             forfattare = ["Ingen", "Forfattare"]
 
+
         total = {
             "rubrik": art[1],
             "ingress": art[2],
             "datum": art[3],
             "bilden": bild,
             "bilder": bilder,
-            "id": art[0],
             "mId": mid,
             "modalId":modalId,
             "forfattare": forfattare,
+            "lank": lank
         }
         totList.append(total)
 
@@ -175,17 +179,19 @@ def addArticle():
     artikel = cursor.fetchall()
 
     for art in artikel:
+        #Lägg till , p.bildtext efter selecten
         try:
             cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
-            bild = ("Ingen")
+            bilder = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
 
         except:
             forfattare = ["Ingen", "Forfattare"]
+
         total = {
             "rubrik": art[1],
             "ingress": art[2],
@@ -246,13 +252,12 @@ def connectForf():
     art_id = request.form["art_id"]
     forf_id = request.form["forf_id"]
 
-
-
     try:
         cursor.execute("INSERT INTO skrivit (artikel_id, forfattar_id)VALUES(%s, %s)", (art_id, forf_id))
         conn.commit()
     except:
         print("Error till db!")
+
 
     totList = []
 
@@ -265,7 +270,7 @@ def connectForf():
             cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
-            bild = ("Ingen")
+            bilder = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
@@ -283,6 +288,7 @@ def connectForf():
         totList.append(total)
 
     return render_template("news.html", totList=totList)
+
 
 @app.route('/connectImage', methods=["POST"])
 def connectImage():
@@ -307,13 +313,14 @@ def connectImage():
             cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
             bilder = cursor.fetchall()
         except:
-            bild = ("Ingen")
+            bilder = ("Ingen")
         try:
             cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
             forfattare = cursor.fetchall()
 
         except:
             forfattare = ["Ingen", "Forfattare"]
+
         total = {
             "rubrik": art[1],
             "ingress": art[2],
@@ -332,17 +339,164 @@ def connectImage():
 @app.route('/artikel/<artikel_id>')
 def artikel(artikel_id):
     # Hämtar vilken lektion det var man klickade in på.
-    sql_lecture = "SELECT kurskod, moment, datum FROM artikel WHERE id = %s"
-    cursor.execute (sql_lecture, [artikel_id])
+    #sql_lecture = "SELECT artikel, moment, datum FROM artikel WHERE id = %s"
+    #cursor.execute (sql_lecture, [artikel_id])
+
+    totList = []
+
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.a_text, artikel.datum from artikel where id= %s;", (str(artikel_id)))
+    art = cursor.fetchone()
+
+    try:
+        cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+        bilder = cursor.fetchall()
+    except:
+        bilder = ("Ingen")
+    try:
+        cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
+        forfattare = cursor.fetchall()
+    except:
+        forfattare = ["Ingen", "Forfattare"]
+
+
+    cursor.execute("select knamn, text, kommentar_id, datum from kommentar where artikel_id=%s order by datum desc", (str(art[0])))
+    kommentarer = cursor.fetchall()
+
+    print(kommentarer)
+
+    total = {
+        "rubrik": art[1],
+        "ingress": art[2],
+        "text": art[3],
+        "datum": art[4],
+        "forfattare": forfattare,
+        "bilder": bilder
+        }
+
+    totList.append(total)
+
+    return render_template("article.html", totList=totList, artikel=artikel, kommentarer=kommentarer,artikel_id=artikel_id)
+
+@app.route('/addComment', methods=["POST"])
+def addComment():
+
+    namn = request.form["knamn"]
+    kommentar = request.form["kommentar"]
+    art_id = request.form["art_id"]
+    now = datetime.datetime.now()
+
+    datum = str(now)
+    print(datum)
+    print(art_id)
+
+    try:
+        cursor.execute("INSERT INTO kommentar (knamn, text, artikel_id, datum)VALUES(%s, %s, %s, %s)", (namn, kommentar, art_id, datum))
+        conn.commit()
+    except:
+        print("Error till db!")
+
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
     artikel = cursor.fetchall()
 
-    # Hämtar alla anteckningar för den nuvarande föreläsningen.
-    sql_notes = "SELECT notes.rubrik, notes.text, notes.points, notes.user_id, users.name, notes.note_id, notes.path FROM notes INNER JOIN users ON notes.user_id = users.id WHERE notes.bokning_id = %s ORDER BY points DESC, note_id DESC"
-    cursor2.execute (sql_notes, [artikel_id])
-    notes = cursor2.fetchall()
+    totList = []
+
+    for art in artikel:
+        try:
+            cursor.execute("select b.lank, p.bildnamn from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            bild = cursor.fetchone()
+        except:
+            print("Finns ingen bild")
+            bild = ("Ingen")
+
+        mid =  "#modal" + str(art[0])
+        modalId = "modal" + str(art[0])
+        lank = "/artikel/" + str(art[0])
+
+        try:
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            bilder = cursor.fetchall()
+        except:
+            bilder = ("Ingen")
+
+        try:
+            cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
+            forfattare = cursor.fetchall()
+
+        except:
+            forfattare = ["Ingen", "Forfattare"]
 
 
-    return render_template("note.html", artikel=artikel, notes=notes, artikel_id=artikel_id)
+        total = {
+            "rubrik": art[1],
+            "ingress": art[2],
+            "datum": art[3],
+            "bilden": bild,
+            "bilder": bilder,
+            "mId": mid,
+            "modalId":modalId,
+            "forfattare": forfattare,
+            "lank": lank
+        }
+        totList.append(total)
+
+    return render_template("index.html", artikel=artikel, totList=totList)
+
+@app.route('/deleteComment/<kommentar_id>')
+def delete_note(kommentar_id):
+
+    delete = str(kommentar_id)
+
+    remove = "DELETE FROM kommentar WHERE kommentar_id = %s"
+    cursor.execute(remove, [delete])
+    conn.commit()
+
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
+    artikel = cursor.fetchall()
+
+    totList = []
+
+    for art in artikel:
+        try:
+            cursor.execute("select b.lank, p.bildnamn from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            bild = cursor.fetchone()
+        except:
+            print("Finns ingen bild")
+            bild = ("Ingen")
+
+        mid =  "#modal" + str(art[0])
+        modalId = "modal" + str(art[0])
+        lank = "/artikel/" + str(art[0])
+
+        try:
+            cursor.execute("select p.bildnamn, b.lank from ((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (str(art[0])))
+            bilder = cursor.fetchall()
+        except:
+            bilder = ("Ingen")
+
+        try:
+            cursor.execute("select f.namn, f.efternamn from ((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) where a.id= %s", (str(art[0])))
+            forfattare = cursor.fetchall()
+
+        except:
+            forfattare = ["Ingen", "Forfattare"]
+
+
+        total = {
+            "rubrik": art[1],
+            "ingress": art[2],
+            "datum": art[3],
+            "bilden": bild,
+            "bilder": bilder,
+            "mId": mid,
+            "modalId":modalId,
+            "forfattare": forfattare,
+            "lank": lank
+        }
+        totList.append(total)
+
+    return render_template("index.html", artikel=artikel, totList=totList)
+
+
 
 
 

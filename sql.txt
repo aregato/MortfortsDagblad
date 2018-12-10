@@ -55,6 +55,26 @@ FOREIGN KEY (artikel_id) references artikel(id),
 FOREIGN KEY (bild_id) references bilder(id)
 );
 
+CREATE TABLE kommentar
+(
+  kommentar_id SERIAL,
+  knamn varchar(50),
+  text varchar(200),
+  artikel_id SERIAL,
+  datum date,
+  PRIMARY KEY (kommentar_id),
+  FOREIGN KEY (artikel_id) references artikel(id)
+);
+
+INSERT INTO kommentar
+(knamn, text, artikel_id, datum)
+VALUES
+('Test', 'Test text.', 7, '2018-10-05'),
+('hannes', 'hannes är bäst', 7, '2017-10-05'),
+('jossan', 'jossan har häst', 7, '2019-10-05')
+;
+
+
 INSERT INTO forfattare
 (anv_namn, losenord, namn, efternamn, telefon)
 VALUES
