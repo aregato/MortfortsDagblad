@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Start</title>
+  <!-- Bootstrap -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link href="../static/css/main.css" rel="stylesheet">
+
+  <link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/static/javascript/toolpit.js"></script>
+</head>
+<body class="starter">
+  <!--                Meny                -->
+  <nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!--Denna länken behöver tas bort så att stylingen inte påverkas -> Detta är mobilknappen-->
+        <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">
+          <a href="/start">
+            <img alt="Logga" id="logo" src="../static/pictures/LoggiLueLogo.png">
+          </a>
+          <h2 id="namn">LoggiLue</h2>
+        </div>
+      </div>
+      <div class="navbar-collapse collapse active" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="menu-item-right" href="/my_notes">Mina anteckningar</a></li>
+          <li><a class="menu-item-right" href="/statistics">Statistik</a></li>
+          <li class="menu-item-right"><a href="/konto"><span class="glyphicon glyphicon-cog"></span> {{username}}</a></li>
+          <li class="menu-item-right"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav><!--                Meny slut           -->
+
+  <div class="row start">
+    <div class="container">
+      <div class="inline">
+        <h2>Schema</h2>
+      </div>
+      <div class="inline user">
+        <h4>Välkommen {{username}}!</h4>
+        <h4>{{program_name}}</h4>
+      </div>
+      <hr>
+      <div  class="weekconfig">
+        <h3 class="marg">Veckonummer:</h3>
+        <div class="inline">
+          <h3>
+            <a href="/prev_week_route">
+              <span class="glyphicon glyphicon-menu-left"></span>
+              <span class="glyphicon glyphicon-menu-left"></span>
+              <span class="glyphicon glyphicon-menu-left"></span>
+            </a>
+          </h3>
+        </div>
+        <div class="inline">
+          <h3 class="weeknr">{{weeknr}}</h3>
+        </div>
+        <div class="inline">
+          <h3>
+            <a href="/next_week_route">
+              <span class="glyphicon glyphicon-menu-right"></span>
+              <span class="glyphicon glyphicon-menu-right"></span>
+              <span class="glyphicon glyphicon-menu-right"></span>
+            </a>
+          </h3>
+        </div>
+        <br>
+        <a href="/current_week" class="btn btn-primary">[Nuvarande vecka]</a>
+        <br><br>
+      </div>
+    </div>
+  </div>
+  <div class="row schema">
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <h2>Måndag</h2>
+      <div class="well två fre">
+        <h4>Kurs:</h4><hr>
+        {% for row in mån %}
+        <div class="rad">
+          <!--<h5 id="ele3">{{"%s - %s" % (row[1], row[2])}} |</h5>-->
+          <h5 id="ele1">{{" %s" % (row[3])}} | </h5>
+          <a id="ele4" class="btn btn-info" data-toggle="popover" title="{{" %s" % (row[3])}}" data-content="{{"%s - %s, %s, %s" % (row[1], row[2], row[3], row[4])}}">Info</a>
+          <a id="ele2" href="/note/{{row[0]}}" class="btn btn-success">Välj</a>
+          <hr><br>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <h2>Tisdag</h2>
+      <div class="well två fre">
+        <h4>Kurs:</h4><hr>
+        {% for row in tis %}
+        <div class="rad">
+          <!--<h5 id="ele3">{{"%s - %s" % (row[1], row[2])}} |</h5>-->
+          <h5 id="ele1">{{" %s" % (row[3])}} | </h5>
+          <a id="ele4" class="btn btn-info" data-toggle="popover" title="{{" %s" % (row[3])}}" data-content="{{"%s - %s, %s, %s" % (row[1], row[2], row[3], row[4])}}">Info</a>
+          <a id="ele2" href="/note/{{row[0]}}" class="btn btn-success">Välj</a>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <h2>Onsdag</h2>
+      <div class="well två fre">
+        <h4>Kurs:</h4><hr>
+        {% for row in ons %}
+        <div class="rad">
+          <!--<h5 id="ele3">{{"%s - %s" % (row[1], row[2])}} |</h5>-->
+          <h5 id="ele1">{{" %s" % (row[3])}} | </h5>
+          <a id="ele4" class="btn btn-info" data-toggle="popover" title="{{" %s" % (row[3])}}" data-content="{{"%s - %s, %s, %s" % (row[1], row[2], row[3], row[4])}}">Info</a>
+          <a id="ele2" href="/note/{{row[0]}}" class="btn btn-success">Välj</a>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <h2>Torsdag</h2>
+      <div class="well två fre">
+        <h4>Kurs:</h4><hr>
+        {% for row in tors %}
+        <div class="rad">
+          <!--<h5 id="ele3">{{"%s - %s" % (row[1], row[2])}} |</h5>-->
+          <h5 id="ele1">{{" %s" % (row[3])}} | </h5>
+          <a id="ele4" class="btn btn-info" data-toggle="popover" title="{{" %s" % (row[3])}}" data-content="{{"%s - %s, %s, %s" % (row[1], row[2], row[3], row[4])}}">Info</a>
+          <a id="ele2" href="/note/{{row[0]}}" class="btn btn-success">Välj</a>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2">
+      <h2>Fredag</h2>
+      <div class="well två fre">
+        <!--<h4>Tid:              Kurs:</h4><hr>-->
+        <h4>Kurs:</h4><hr>
+        {% for row in fre %}
+        <div class="rad">
+          <!--<h5 id="ele3">{{"%s - %s" % (row[1], row[2])}} |</h5>-->
+          <h5 id="ele1">{{" %s" % (row[3])}} | </h5>
+          <a id="ele4" class="btn btn-info" data-toggle="popover" title="{{" %s" % (row[3])}}" data-content="{{"%s - %s, %s, %s" % (row[1], row[2], row[3], row[4])}}">Info</a>
+          <a id="ele2" href="/note/{{row[0]}}" class="btn btn-success">Välj</a>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://npmcdn.com/headroom.js"></script>
+  <script src="../static/javascript/jquery.easing.min.js"></script>
+  <script src="../static/javascript/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+
+/* Bakgrundsbilden */
+div.pg
+{
+  margin-top: -90px;
+  padding-bottom:  10px;
+  background-image: url("../pictures/bluegraident.png");
+  background-color: #5ab9ea;
+  background-size: cover;
+  overflow: auto;
+
+}
+/* Slut Bakgrundsbilden */
+
+/* ----------------------------------------------------------------------------- */
+
+/* Meny */
+a
+{
+  color: white !important;
+}
+
+#menu_main{
+  background: transparent;
+  padding-top: 17px;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) ;
+}
+
+#logo
+{
+  width: 132px;
+  height: 72px;
+  position: fixed;
+  margin-top: -34px;
+  left: 2%;
+}
+#namn
+{
+  margin-left: 110%;
+  margin-top: -10%;
+  color: white;
+}
+
+ul.navbar-nav
+{
+  margin-left: 20px;
+}
+ul.navbar-right
+{
+  margin-right: 8px;
+}
+.menu-item-left
+{
+  margin-top: -5px;
+}
+
+/* Slut Meny */
+
+/* Animationer till menyn kopplat till JS */
+.animated {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@-webkit-keyframes slideDown {
+    0% {
+        -webkit-transform: translateY(-100%)
+    }
+    100% {
+        -webkit-transform: translateY(0)
+    }
+}
+@-moz-keyframes slideDown {
+    0% {
+        -moz-transform: translateY(-100%)
+    }
+    100% {
+        -moz-transform: translateY(0)
+    }
+}
+@-o-keyframes slideDown {
+    0% {
+        -o-transform: translateY(-100%)
+    }
+    100% {
+        -o-transform: translateY(0)
+    }
+}
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+.animated.slideDown {
+    -webkit-animation-name: slideDown;
+    -moz-animation-name: slideDown;
+    -o-animation-name: slideDown;
+    animation-name: slideDown
+}
+@-webkit-keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(0)
+    }
+    100% {
+        -webkit-transform: translateY(-100%)
+    }
+}
+@-moz-keyframes slideUp {
+    0% {
+        -moz-transform: translateY(0)
+    }
+    100% {
+        -moz-transform: translateY(-100%)
+    }
+}
+@-o-keyframes slideUp {
+    0% {
+        -o-transform: translateY(0)
+    }
+    100% {
+        -o-transform: translateY(-100%)
+    }
+}
+@keyframes slideUp {
+    0% {
+        transform: translateY(0)
+    }
+    100% {
+        transform: translateY(-100%)
+    }
+}
+.animated.slideUp {
+    -webkit-animation-name: slideUp;
+    -moz-animation-name: slideUp;
+    -o-animation-name: slideUp;
+    animation-name: slideUp
+}
+
+/* Slut -Animationer till menyn kopplat till JS */
+
+/* ----------------------------------------------------------------------------- */
+
+
+/* Inloggningsrutan och alla element i den */
+div.well.smell
+{
+ background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  margin-top: 100px;
+  padding-top: 30px;
+  padding-bottom:0;
+  padding-right: 0;
+  padding-left: 0;
+  border-color: rgba( 255, 255, 255, 0.3) !important;
+  margin-top: 190px;
+}
+
+.form-signin-heading
+{
+    text-align: center;
+    color: white;
+    padding-bottom: 35px;
+}
+
+div.etc-login-form
+{
+  text-align: center;
+  margin-top: 10px;
+  margin-left: -20%;
+}
+input.login
+{
+  margin-top: 60px;
+  margin-left: 15%;
+  margin-bottom: 60px;
+  width: 50%;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 20px;
+  font-size: 22px;
+  color: white;
+
+}
+
+
+
+input.login:hover {
+  background-color: white;
+  color: black;
+  transition-duration: 0.4s;
+}
+
+input.login
+{
+  margin-top: 60px;
+  margin-left: 15%;
+  margin-bottom: 60px;
+  width: 50%;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 20px;
+  font-size: 22px;
+  color: white;
+
+}
+
+input.login:hover {
+  background-color: white;
+  color: black;
+  transition-duration: 0.4s;
+}
+
+#email{
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) ;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: white;
+  margin-top: 18px;
+  font-size: 22px;
+
+
+
+}
+#email:focus{
+  border-bottom:2px solid white;
+}
+
+.svg-icon{
+  stroke-dasharray: 99;
+  animation: dash 3s  linear forwards;
+  width: 35px;
+  height: 35px;
+  stroke: rgb(255, 255, 255);
+  fill: none;
+  margin-top: 9px;
+
+
+}
+
+
+.input-group-addon{
+  color: white;
+  background-color: transparent;
+  border: none;
+
+
+
+
+}
+
+#pw {
+  margin-top: 18px;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3);
+  border-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: white;
+  font-size: 22px;
+
+
+
+
+}
+
+#pw:focus{
+
+  border-bottom:2px solid white;
+
+}
+
+.panel.panel-default{
+	background:rgba(5,5,5,0.4);
+	border:none;
+	border-radius: 0 !important;
+	color: white;
+	font-size: 19px;
+}
+
+
+.register{
+  width: 85%;
+  background: transparent;
+  border: 2px solid;
+  -moz-border-image: -moz-linear-gradient(top, #5AB9EA 0%,#5680E9 50%, #8860D0 100%);
+  -webkit-border-image: -webkit-linear-gradient(top, #5AB9EA 0%,#5680E9 50%, #8860D0 100%);
+  border-image: linear-gradient(to bottom, #5AB9EA 0%,#5680E9 50%, #8860D0 100%);
+  border-image-slice: 1;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.register:hover{
+  background-color: white;
+  color: black;
+  transition-duration: 0.4s;
+}
+
+.form-control:focus {
+-webkit-box-shadow: none;
+      outline: -webkit-focus-ring-color auto 0px;}
+
+
+.form-control::-webkit-input-placeholder { color: white; }
+.form-control:-moz-placeholder { color: white; }
+.form-control::-moz-placeholder { color: white; }
+.form-control:-ms-input-placeholder { color: white; }
+
+
+/* Slut Inloggningsrutan och alla element i den */
+
+/* Animationer till SVG Filerna */
+
+@keyframes dash{
+  from {
+    stroke-dashoffset: 100;
+  }
+  to{
+    stroke-dashoffset:10;
+  }
+}
+
+/* Slut Animationer till SVG Filerna */
+
+/* ----------------------------------------------------------------------------- */
+
+/*About*/
+#about{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color:#3F6190;
+}
+
+
+.text-faded{
+  padding-top: 85px;
+  padding-bottom: 85px;
+  font-size: 17px;
+
+}
+
+.light{
+  width: 125px;
+}
+
+
+
+
+/* Slut About */
+
+/* ----------------------------------------------------------------------------- */
+
+
+/*statistics*/
+#statistics{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #5AB9EA;
+}
+
+#statistics_2{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #8860D0;
+}
+
+#space{
+  padding-top: 250px;
+  padding-bottom: 480px;
+
+}
+
+#user_registerd{
+  color: white;
+  font-size: 55px;
+}
+
+#notes_sum{
+  color: white;
+  font-size: 55px;
+}
+
+.inner_donut {
+   margin-top: -238px;
+
+}
+.inner_donut h4 {
+   margin-bottom: 15px;
+   margin-top: 0;
+   margin-left: 5px;
+   font-size: 14px;
+}
+
+.light{
+  width: 125px;
+}
+
+
+
+
+
+/* Slut About */
+
+/* ----------------------------------------------------------------------------- */
+
+
+/* Help sidan */
+#help{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: white;
+  background-color: #3F6190;
+}
+
+#padding{
+  padding-top: 85px;
+  padding-bottom: 85px;
+
+}
+.service-box>i{
+  color: white!important;
+}
+.text-muted{
+  color: white;
+}
+
+.service-box>h3{
+  color: #5AB9EA;
+
+}
+
+
+/* Slut på Help sidan */
+
+/* ----------------------------------------------------------------------------- */
+
+/* Kontakt sidan */
+#contact{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #5AB9EA;
+
+}
+
+#white_text2{
+  color: white;
+}
+
+.section-heading{
+  color: white;
+}
+
+#padding_2{
+  padding-top: 85px;
+}
+
+.white_text{
+  color: white;
+}
+
+.white_text>p>small{
+  color: white;
+}
+
+
+.text{
+  opacity: 0;
+}
+
+
+.img-box a{
+	color:white;
+}
+.img-box:hover:after{
+	opacity: 1;
+}
+.img-box:hover ul{
+	opacity: 1;
+}
+.img-box ul a{
+	-webkit-transition: all 0.3s ease-in-out 0s;
+	-moz-transition: all 0.3s ease-in-out 0s;
+	transition: all 0.3s ease-in-out 0s;
+
+}
+.img-box a:hover li{
+	border-color: white;
+	color: #3F6190;
+}
+
+.text-center .img-box{
+	opacity: 1;
+	display: block;
+	position: relative;
+
+}
+
+
+.text-center .img-box:after{
+	content:"";
+	opacity: 0;
+	background-color:rgba(90, 185, 234, 0.85);
+	position: absolute;
+  border-radius: 200px;
+	right: 0;
+	left: 0;
+	top: 0;
+	bottom: 0;
+
+
+}
+.img-box ul{
+	position: absolute;
+	z-index: 2;
+	top:80px;
+	width: 100%;
+	padding-left: 0px;
+	height: 0px;
+	margin:0px;
+	opacity: 0;
+}
+.text-center .img-box:after, .img-box ul, .img-box ul li{
+	-webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+}
+.img-box ul i{
+	font-size: 45px;
+	letter-spacing: 10px;
+}
+.img-box ul li{
+	width: 60px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid #3F6190;
+    margin: 2px;
+    padding: 5px;
+	display: inline-block;
+}
+.img-box a{
+	color:#fff;
+}
+.img-box:hover:after{
+	opacity: 1;
+}
+.img-box:hover ul{
+	opacity: 1;
+}
+
+
+
+
+/* Slut på Kontakt sidan */
+
+
+
+/* Boxen som endast visas utifall man har felaktiga inloggningsupgifter */
+#hidden_box{
+  display: none;
+}
+
+#show_box{
+  background-color: transparent;
+  color: white;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  border: 2px solid red;
+  -webkit-animation-name: flash;
+  animation-name: flash;
+  -webkit-animation-duration:2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  font-size: 22px;
+
+}
+
+@-webkit-keyframes flash {
+  from, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+@keyframes flash {
+  from, 50%, to {
+    opacity: 1;
+  }
+
+  25%, 75% {
+    opacity: 0;
+  }
+}
+
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+/* SLut på Boxen som endast visas utifall man har felaktiga inloggningsupgifter */
+
+
+
+/* DEN BÄSTA KNAPPEN */
+
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 1px solid white;
+  border-radius: 100% !important;
+  font-size: 40px;
+  color: white;
+  background: transparent;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.btn-circle:hover,
+.btn-circle:focus {
+  outline: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-circle i.animated {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+}
+.btn-circle:hover i.animated {
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* Knapp slut */

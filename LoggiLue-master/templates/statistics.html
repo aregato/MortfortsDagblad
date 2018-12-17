@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>Statistik</title>
+	<link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/css/index.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/countupjs/1.8.5/countUp.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="../static/javascript/noframework.waypoints.js"></script>
+</head>
+<body>
+	<!--                Meny                -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+				<div class="navbar-brand">
+					<a href="/start"><img alt="Logo" id="logo" src="../static/pictures/LoggiLueLogo.png"></a>
+					<h2 id="namn">LoggiLue</h2>
+				</div>
+			</div>
+			<div class="navbar-collapse collapse active" id="navbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="menu-item-right" href="/my_notes">Mina anteckningar</a></li>
+					<li><a class="menu-item-right" href="/statistics">Statistik</a></li>
+					<li class="menu-item-right"><a href="/konto"><span class="glyphicon glyphicon-cog"></span> {{username}}</a></li>
+					<li class="menu-item-right"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav><!--                Meny slut           -->
+	<!-- Inloggningen -->
+
+	<!--Statistik sidan  -->
+	<section class="bg-primary" id="statistics_2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">Statistik om LoggiLue</h2>
+					<hr class="light">
+				</div>
+				<div id="space">
+					<div class="col-lg-5 col-md-6 text-center">
+						<div class="service-box" id="waypoint1">
+							<h3 id="user_registerd">{% for row in total_users %} {{"%s" % (row[0])}} {% endfor %}</h3>
+							<hr>
+							<h4>Elever som valt att registrera sig på vår sida</h4>
+							<h3 id="notes_sum">{% for row in total_notes %} {{"%s" % (row[0])}} {% endfor %}</h3>
+							<hr>
+							<h4>Anteckningar har delats av andra elever</h4>
+							<script>
+							var count2 = new CountUp(document.getElementById("notes_sum"), 0, {% for row in total_notes %} {{"%s" % (row[0])}} {% endfor %}, 0, 10, {  
+								useEasing : true,
+								useGrouping : true,
+								separator : ',',
+							});
+							var waypoint2 = new Waypoint({
+								element: document.getElementById('waypoint1'),
+								handler: function(direction) {
+
+									if (direction == "up") {
+										count2.reset();
+									} else {
+										count2.start();
+									}
+
+								},
+								offset: '50%'
+							});
+
+
+							var count1 = new CountUp(document.getElementById("user_registerd"), 0, {% for row in total_users %} {{"%s" % (row[0])}} {% endfor %}, 0, 10, {  
+								useEasing : true,
+								useGrouping : true,
+								separator : ',',
+							});
+							var waypoint1 = new Waypoint({
+								element: document.getElementById('waypoint1'),
+								handler: function(direction) {
+									if (direction == "up") {
+										count1.reset();
+									} else {
+										count1.start();
+									}
+								},
+								offset: '50%'
+							});
+							</script>
+						</div>
+					</div>
+
+					<div class="col-lg-5 col-md-6 text-center">
+						<div class="service-box">
+							<canvas height="150" id="user_programs" width="140"></canvas>
+							<div class="inner_donut">
+								<h4>Andel elever i respektive Program</h4>
+							</div>
+							<script>
+
+							var data = {
+								labels: [
+									"Informationsarkitekt HT16",
+									"Informationsarkitekt HT15"
+								],
+								datasets: [
+									{
+										data: [{% for row in ht16 %} {{"%s" % (row[0])}} {% endfor %}, {% for row in ht15 %} {{"%s" % (row[0])}} {% endfor %}],
+										backgroundColor: [
+											"#5680E9",
+											"#fff"
+										],
+										hoverBackgroundColor: [
+											"#3F6190",
+											"#5AB9EA"
+										]
+
+									}]
+								};
+
+
+								var inView = false;
+								function isScrolledIntoView(elem)
+								{
+									var docViewTop = $(window).scrollTop();
+									var docViewBottom = docViewTop + $(window).height();
+
+									var elemTop = $(elem).offset().top;
+									var elemBottom = elemTop + $(elem).height();
+
+									return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+								}
+
+								$(window).scroll(function() {
+									if (isScrolledIntoView('#user_programs')) {
+										if (inView) { return; }
+										inView = true;
+										new Chart(
+											document.getElementById("user_programs").getContext("2d"),
+											{type: 'doughnut', data: data });
+										} else {
+											inView = false;
+										}
+									});
+
+
+
+
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		<!--Skripten  -->
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+		</script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+		</script>
+		<script src="https://use.fontawesome.com/73625e5286.js">
+		</script>
+		<script src="https://npmcdn.com/headroom.js">
+		</script>
+		<script src="../static/javascript/jquery.easing.min.js">
+		</script>
+		<script src="../static/javascript/index.js">
+		</script>
+
+
+
+
+		<!--Slut på skript -->
+
+	</body>
+	</html>

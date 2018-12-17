@@ -1,0 +1,13 @@
+create table kurs
+(namn text,
+kod char(6),
+max_studenter integer);
+
+create table student
+(namn text,
+pers_nr char(12),
+adress text);
+
+create table registrerad_på 
+(student_nr char(12),
+kurskod char(6));

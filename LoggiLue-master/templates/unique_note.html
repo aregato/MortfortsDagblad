@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>{% for row in lecture %} {{"%s - %s " % (row[0], row[1])}} {% endfor %}</title>
+	<link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/unique_note.css') }}" >
+</head>
+<body>
+	<!--                Meny                -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+				<div class="navbar-brand">
+					<a href="/start">
+						<img alt="Logga" id="logo" src="/static/pictures/LoggiLueLogo.png"></a>
+						<h2 id="namn">LoggiLue</h2>
+					</div>
+				</div>
+				<div class="navbar-collapse collapse active" id="navbar">
+					<ul class="nav navbar-nav navbar-right">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a class="menu-item-right" href="/my_notes">Mina anteckningar</a></li>
+							<li><a class="menu-item-right" href="/statistics">Statistik</a></li>
+							<li class="menu-item-right"><a href="/konto"><span class="glyphicon glyphicon-cog"></span> {{username}}</a></li>
+							<li class="menu-item-right"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!--                Meny slut           -->
+
+			<div class="pg">
+				<div class="container">
+					<div class="page-header">
+						{% for row in notes %}
+						<h3 class="text-center">Anteckning: {{"%s" % (row[0])}}</h3>
+						{% endfor %}
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 text-center">
+								<div class="service-box">
+									<i aria-hidden="true" class="fa fa-4x fa fa-user-o"></i>
+									{% for row in notes %}
+									<h3>Skribenten</h3>
+									<p class="text-muted">{{"%s" % (row[4])}}</p>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 text-center">
+								<div class="service-box">
+									<i aria-hidden="true" class="fa fa-4x fa fa-trophy"></i>
+									{% for row in notes %}
+									<h3>Poäng</h3>
+									<p class="text-muted">{{"%s" % (row[2])}}</p>
+									{% endfor %}
+								</div>
+							</div>
+
+							<table id="table_note">
+								<tbody>
+									<tr>
+										{% for row in notes %}
+										<td class="vote_user">
+											<div class="vote">
+												<a href="/add_point/{{bokning_id}}/{{"%s" % (row[5])}}"><i aria-hidden="true" class="fa fa-4x fa fa-angle-up "></i></a>
+												<p>{{"%s" % (row[2])}}</p>
+												<a href="/remove_point/{{bokning_id}}/{{"%s" % (row[5])}}"><i aria-hidden="true" class="fa fa-4x fa fa-angle-down"></i></a>
+											</div>
+										</td>
+										<td class="the_note">
+											<div class="note">
+												<p>{{"%s" % (row[1])}}</p>
+												<br>
+												<h3>Bifogad fil:</h3>
+												<a href="/show_file/{{"%s" % (row[6])}}" target="_blank">{{"%s" % (row[6])}}</a>
+											</div>
+										</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js">
+			</script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+			</script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+			</script>
+			<script src="https://use.fontawesome.com/73625e5286.js">
+			</script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+			</script>
+			<script src="https://npmcdn.com/headroom.js">
+			</script>
+			<script src="{{ url_for('static', filename='javascript/jquery.easing.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='javascript/index.js') }}">
+			</script>
+		</body>
+		</html>

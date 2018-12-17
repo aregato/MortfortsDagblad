@@ -1,0 +1,293 @@
+
+body
+{
+  background-color: #597BE7;
+}
+div.pg
+{
+  margin-top: -90px;
+  padding-bottom:  10px;
+  background-image: url("../pictures/bluegraident.png");
+  background-color: #5ab9ea;
+  background-size: cover;
+  overflow: auto;
+  height: 840px;
+
+}
+/* MENU */
+nav.navbar
+{
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+img
+{
+  width: 132px;
+  height: 72px;
+  position: fixed;
+  margin-top: -25px;
+  LEFT: 22%;
+}
+/* PLacering */
+
+ul.navbar-nav
+{
+  margin-left: 20px;
+}
+ul.navbar-right
+{
+  margin-right: 300px;
+}
+/* meny */
+a
+{
+
+  color: white !important;
+}
+.glyphicon-cog
+{
+  color: white;
+}
+.glyphicon-user
+{
+  color: white;
+}
+
+
+
+input.login
+{
+  margin-top: 50px;
+  margin-left: 125px;
+  margin-bottom: 20px;
+  width: 50%;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 20px;
+  font-size: 15px;
+
+}
+
+input.login:hover {
+  background-color: white;
+  color: black;
+  border-radius: 35px;
+  transition-duration: 1s;
+}
+
+/*Överskrider bootstraps olika färger*/
+.form-control:focus {
+-webkit-box-shadow: none;
+      outline: -webkit-focus-ring-color auto 0px;}
+
+.form-control::-webkit-input-placeholder { color: white; }
+.form-control:-moz-placeholder { color: white; }
+.form-control::-moz-placeholder { color: white; }
+.form-control:-ms-input-placeholder { color: white; }
+/*Slut*/
+
+.form-signin-heading{
+  color: white;
+  text-align: center;
+}
+
+#email{
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: white;
+
+}
+/*Lekstuga*/
+
+.svg-icon{
+  stroke-dasharray: 100;
+  animation: dash 3s  linear forwards;
+  width: 35px;
+  height: 35px;
+  stroke: rgb(255, 255, 255);
+  fill: none;
+
+}
+
+
+@keyframes dash{
+  from {
+    stroke-dashoffset: 130;
+  }
+  to{
+    stroke-dashoffset:0;
+  }
+}
+
+
+/*Lekstuga*/
+
+.input-group-addon{
+  color: white;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) !important;
+
+
+}
+
+
+
+
+#pw {
+  margin-top: 15px;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  color: white;
+
+
+}
+div.well
+{
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  padding-top: 30px;
+  padding-bottom:20px;
+  border-color: rgba( 255, 255, 255, 0.3) !important;
+}
+div.well.smell
+{
+  margin-top: 190px;
+}
+
+form > input.form-control.email
+{
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+form > input.form-control.password
+{
+  margin-bottom: 30px;
+}
+div.etc-login-form
+{
+  text-align: center;
+  margin-top: 10px;
+  margin-left: -20%;
+}
+
+#help{
+  margin-left: 20%;
+}
+
+/* GÖMD BOX */
+#hidden_box{
+  display: none;
+}
+
+#show_box{
+  background-color: white;
+  color: red;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  width: 50%;
+
+}
+
+/* DEN BÄSTA KNAPPEN */
+a.btn.page-scroll
+{
+  margin-left: 240px;
+}
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid white;
+  border-radius: 100% !important;
+  font-size: 40px;
+  color: white;
+  background: transparent;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.btn-circle:hover,
+.btn-circle:focus {
+  outline: none;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+.btn-circle i.animated {
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 1s;
+  -moz-transition-property: -moz-transform;
+  -moz-transition-duration: 1s;
+}
+.btn-circle:hover i.animated {
+  -webkit-animation-name: pulse;
+  -moz-animation-name: pulse;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/* teste */
+@media screen and (max-width: 1170px)
+{
+  img
+  {
+    left: 5%;
+  }
+}

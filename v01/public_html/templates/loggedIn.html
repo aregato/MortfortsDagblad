@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mörtfors dagblad</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+        <link href="../static/css/hamburgers.min.css" rel="stylesheet">
+
+        <link href="../static/css/style.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <header class="jumbotron text-center">
+            <h1>Mörtforsa dagblad v1</h1>
+        </header>
+
+        <section class="sm_container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h3 class="ri">Välkommen</h3>
+                </div>
+                <div class="col-sm-2">
+                    <h3 class="username">{{username}}</h3>
+                </div>
+            </div>
+        </section>
+
+        <nav id="openMenu">
+            <button id="hamburger" class="hamburger hamburger--collapse" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </nav>
+
+             <nav id="menu" class="navbar navbar-expand-sm bg-danger navbar-dark">
+
+            <ul class="navbar-nav">
+                <li><a class="navbar-brand">Logo</a></li>
+                <li class="first nav-item ">
+                    <a class="nav-link" href="/">Hem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">Nyheter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/images">Bildarkiv</a>
+                </li>
+                <li class="nav-item right">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#logInModal">Logga in</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <nav id="logInMenu" class="navbar navbar-expand-sm bg-danger navbar-dark">
+
+            <ul class="navbar-nav">
+                <li><a class="navbar-brand">Logo</a></li>
+                <li class="first nav-item ">
+                    <a class="nav-link" href="/">Hem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/news">Nyheter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/images">Bildarkiv</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/add">Lägg till</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">Inställningar</a>
+                </li>
+                <li class="nav-item right">
+                    <a class="nav-link tight" href="/">Logga ut</a>
+                </li>
+            </ul>
+
+        </nav>
+
+
+          <footer id="footerIn">
+            <div class="container">
+                <div class="row">
+                    <a>Logo</a>
+                    <ul>
+                        <li><a href="/">Hem</a></li>
+                        <li><a href="/news">Nyheter</a></li>
+                        <li><a href="/images">Bildarkiv</a></li>
+                        <li><a class="tight" href="#" data-toggle="modal" data-target="#logInModal">Logga in</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <footer id="footerOut">
+            <div class="container">
+                <div class="row">
+                    <a>Logo</a>
+                    <ul>
+                        <li><a href="/">Hem</a></li>
+                        <li><a href="/news">Nyheter</a></li>
+                        <li><a href="/images">Bildarkiv</a></li>
+                        <li><a href="/add">Lägg till</a></li>
+                        <li><a href="/settings">Inställningar</a></li>
+                        <li><a class="tight" href="/">Logga ut</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <script src="../static/js/logIn.js"></script>
+
+        <script src="../static/js/controller.js"></script>
+        <script src="../static/js/nav_hamburger.js"></script>
+
+
+
+    </body>
+</html>

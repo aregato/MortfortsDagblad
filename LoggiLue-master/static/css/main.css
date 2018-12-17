@@ -1,0 +1,289 @@
+
+body
+{
+  background-color: #5ab9ea;
+  background-size: cover;
+  overflow: auto;
+  background-image: url("../pictures/bluegraident.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  margin: 0%;
+  padding: 0%;
+}
+body.starter
+{
+  overflow: hidden;
+}
+/* Meny */
+a
+{
+  color: white !important;
+}
+
+#menu_main{
+  background: transparent;
+  padding-top: 17px;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) ;
+
+}
+#navbar
+{
+  margin-left: 15%;
+}
+
+#logo
+{
+  width: 132px;
+  height: 72px;
+  position: fixed;
+  margin-top: -34px;
+  left: 2%;
+}
+#namn
+{
+  margin-left: 110%;
+  margin-top: -10%;
+  color: white;
+}
+
+ul.navbar-nav
+{
+  margin-left: 20px;
+}
+ul.navbar-right
+{
+  margin-right: 8px;
+}
+.menu-item-left
+{
+  margin-top: 0px;
+  margin-left: 10%;
+}
+.menu-item-right
+{
+  margin-top: 0px;
+}
+
+/* Animationer till menyn kopplat till JS */
+.animated {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@-webkit-keyframes slideDown {
+    0% {
+        -webkit-transform: translateY(-100%)
+    }
+    100% {
+        -webkit-transform: translateY(0)
+    }
+}
+@-moz-keyframes slideDown {
+    0% {
+        -moz-transform: translateY(-100%)
+    }
+    100% {
+        -moz-transform: translateY(0)
+    }
+}
+@-o-keyframes slideDown {
+    0% {
+        -o-transform: translateY(-100%)
+    }
+    100% {
+        -o-transform: translateY(0)
+    }
+}
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+.animated.slideDown {
+    -webkit-animation-name: slideDown;
+    -moz-animation-name: slideDown;
+    -o-animation-name: slideDown;
+    animation-name: slideDown
+}
+@-webkit-keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(0)
+    }
+    100% {
+        -webkit-transform: translateY(-100%)
+    }
+}
+@-moz-keyframes slideUp {
+    0% {
+        -moz-transform: translateY(0)
+    }
+    100% {
+        -moz-transform: translateY(-100%)
+    }
+}
+@-o-keyframes slideUp {
+    0% {
+        -o-transform: translateY(0)
+    }
+    100% {
+        -o-transform: translateY(-100%)
+    }
+}
+@keyframes slideUp {
+    0% {
+        transform: translateY(0)
+    }
+    100% {
+        transform: translateY(-100%)
+    }
+}
+.animated.slideUp {
+    -webkit-animation-name: slideUp;
+    -moz-animation-name: slideUp;
+    -o-animation-name: slideUp;
+    animation-name: slideUp
+}
+
+/* Slut -Animationer till menyn kopplat till JS */
+
+/* Slut Meny */
+/* Body */
+h2
+{
+  color: white;
+
+}
+li
+{
+  list-style: none;
+}
+.well
+{
+  color: white;
+  border-color: rgba( 255, 255, 255, 0.3) !important;
+}
+.well.ett
+{
+  margin-top: 18%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+}
+.well.två
+{
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+
+}
+
+.row.schema
+{
+  margin-left: 2%;
+  margin-top: -7%;
+
+}
+.col-lg-2.col-md-2.col-sm-2
+{
+  width: 19%;
+  display: inline-block;
+
+}
+
+.rad
+{
+  display: inline;
+  margin-bottom: 5%;
+}
+.weekconfig
+{
+  text-align: center;
+}
+.inline
+{
+  display: inline-block;
+}
+.inline1
+{
+  display: inline-flex;
+  color: white;
+  margin-bottom: 10px;
+}
+.btn-warning
+{
+  margin-left: 15px;
+}
+.user
+{
+  color: white;
+  margin-left: 70%;
+}
+.start
+{
+  margin-top: 80px;
+  margin-bottom: 100px;
+}
+
+#ele1
+{
+  display: inline;
+}
+#ele2
+{
+  display: inline;
+}
+#ele3
+{
+  display: inline;
+}
+#ele4
+{
+  display: inline;
+
+}
+textarea
+{
+  color: black;
+}
+#rubrik
+{
+  color: black;
+}
+
+h3.weeknr
+{
+  color: white !important;
+  font-size: 400%;
+
+}
+h3.marg
+{
+  color: white;
+  margin-bottom: -20px;
+}
+.button.svart
+{
+  color: black;
+}
+.popover.fade.right.in
+{
+  background-color: darkblue;
+  width: 250px;
+  color: white;
+}
+.popover-title
+{
+  background-color: darkblue;
+}
+
+
+/* body Meny */
+
+/*Mina sidor dvs inte start*/
+
+/*Slut Mina sidor dvs inte start*/

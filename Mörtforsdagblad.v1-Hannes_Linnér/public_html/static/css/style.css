@@ -1,0 +1,248 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 2018-aug-08, 12:32:20
+    Author     : hannes
+*/
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body{
+    background-color: rgba(223, 236, 239, 1) !important;
+    height: 100%;
+    margin: 0;
+}
+
+
+header{
+    height: 40vh;
+
+    background-color: rgba(220, 53, 69, 0.6) !important;
+    color: white;
+}
+header > h1{
+    margin-top: 10px;
+    font-size: 100px;
+}
+section.sm_container{
+
+
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 100px;
+    min-height: 50%;
+
+  /* Equal to he    min-height: 50%;ight of footer */
+  /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: -50px;
+}
+section.container{
+   min-height: 120%;
+
+  /* Equal to he    min-height: 50%;ight of footer */
+  /* But also accounting for potential margin-bottom of last child */
+    margin-bottom: 50px;
+}
+.addArticle{
+  margin-left: auto;
+  margin-right: auto;
+
+  align-items: center;
+}
+form > label{
+  font-weight: bold;
+}
+.date {
+  margin: 25px;
+}
+.artikel > h3{
+  font-size: 70px;
+}
+.artikel > p.artikelIngress{
+  margin-left: 20px;
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+.artikel > img.artikelImage{
+
+  height: 180px;
+  margin-left: 65%;
+}
+.dateArtikel{
+  margin-top: -10px;
+}
+.bildTextArt{
+    margin-left: 65%;
+}
+.textArtikel{
+  width: 50%;
+  margin-left: 20px;
+  margin-top: -150px;
+}
+.ri{
+    margin-left: 40px;
+}
+.clicker{
+  border: 1px solid #ffb7c0;
+  border-radius: 15px;
+  padding: 10px;
+  height: 500px;
+}
+.clicker:hover{
+  padding: 12px;
+  cursor: zoom-in;
+  box-shadow: 10px 10px 5px #aaaaaa;
+}
+.clicker > h3{
+  font-size: 40px;
+  text-align: center;
+}
+.clicker > p.ingressStart{
+  margin-top: 10px;
+  font-size: 20px;
+}
+.clicker > p.dateStart{
+    bottom: 10px;
+    position: absolute;
+}
+p.forfStart{
+  margin: -5px;
+}
+.close.delComment{
+  margin-top: -45px;
+}
+img.news_image{
+  height: 180px;
+  display: inline;
+  padding: 10px;
+  margin: 10px;
+}
+img.start_image{
+  height: auto;
+  width: 100%;
+}
+#losenord{
+  margin-bottom: 25px;
+}
+#bild{
+  margin-bottom: 25px;
+}
+#openMenu{
+    position: fixed;
+    top: 0;
+
+    margin-left: 10px;
+    margin-top: 10px;
+    width: auto;
+    height: auto;
+}
+
+#menu{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    display: none;
+}
+
+#menu > ul > li > a.navbar-brand{
+    font-size: 30px;
+}
+#menu > ul > li{
+    padding: 1px 40px;
+}
+#menu > ul > li.first > a{
+    margin-left: 10px;
+}
+#menu > ul > li.nav-item > a{
+    font-size: 22px;
+    padding: 1px 40px;
+    margin-top: 10px;
+}
+#menu > ul > li > a:hover{
+    background-color: lightcoral;
+}
+
+#menu > ul > li.nav-right > a{
+    font-size: 22px;
+}
+#logInMenu{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    display: none;
+}
+
+#logInMenu > ul > li > a.navbar-brand{
+    font-size: 30px;
+}
+#logInMenu > ul > li{
+    padding: 1px 40px;
+}
+#logInMenu > ul > li.first > a{
+    margin-left: 10px;
+}
+#logInMenu > ul > li.nav-item > a{
+    font-size: 22px;
+    padding: 1px 40px;
+    margin-top: 10px;
+}
+#logInMenu > ul > li > a:hover{
+    background-color: lightcoral;
+}
+
+#logInMenu > ul > li.nav-right > a{
+    font-size: 22px;
+}
+.right{
+    position: fixed;
+    right: 0;
+}
+
+footer{
+    height: 15vh;
+    background-color: rgba(220, 53, 69, 0.6) !important;
+}
+footer > div > .row{
+    padding-top: 4%;
+}
+
+footer > div > div > ul{
+    list-style: none;
+}
+footer > div > div > ul li{
+    display: inline;
+    padding: 5px;
+}
+footer > div > div > ul > li > a, footer > div > div > a{
+    font-size: 110%;
+}
+footer > div > div > ul > li > a{
+    padding: 0px 0px;
+    color: black;
+    padding: 2px 5px;
+
+}
+footer > div > div > ul > li > a:hover{
+    background-color: lightcoral;
+}
+
+.tight{
+    margin-left: 500px;
+}
+.activ{
+    padding: 10px 10px;
+    border-radius: 20px;
+    background-color: rgba(220, 53, 69, 0.2) !important;
+    color: white;
+}
+.hide{
+  display: none;
+}

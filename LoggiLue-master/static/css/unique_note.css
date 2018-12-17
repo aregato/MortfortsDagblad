@@ -1,0 +1,221 @@
+
+/* Bakgrundsbilden */
+div.pg
+{
+  background-image: url("/static/pictures/bluegraident.png");
+  background-color: #5ab9ea;
+  background-size: cover;
+  overflow: auto;
+
+}
+/* Slut Bakgrundsbilden */
+
+/* ----------------------------------------------------------------------------- */
+
+/* Meny */
+a
+{
+  color: white !important;
+}
+
+#menu_main{
+  background: transparent;
+  padding-top: 17px;
+  border-bottom-color: rgba( 255, 255, 255, 0.3) ;
+}
+
+#logo
+{
+  width: 132px;
+  height: 72px;
+  position: fixed;
+  margin-top: -34px;
+  left: 2%;
+}
+#namn
+{
+  margin-left: 110%;
+  margin-top: -10%;
+  color: white;
+}
+
+ul.navbar-nav
+{
+  margin-left: 20px;
+}
+ul.navbar-right
+{
+  margin-right: 8px;
+}
+.menu-item-left
+{
+  margin-top: -5px;
+}
+
+/* Slut Meny */
+
+/* Animationer till menyn kopplat till JS */
+.animated {
+    -webkit-animation-duration: .5s;
+    -moz-animation-duration: .5s;
+    -o-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+@-webkit-keyframes slideDown {
+    0% {
+        -webkit-transform: translateY(-100%)
+    }
+    100% {
+        -webkit-transform: translateY(0)
+    }
+}
+@-moz-keyframes slideDown {
+    0% {
+        -moz-transform: translateY(-100%)
+    }
+    100% {
+        -moz-transform: translateY(0)
+    }
+}
+@-o-keyframes slideDown {
+    0% {
+        -o-transform: translateY(-100%)
+    }
+    100% {
+        -o-transform: translateY(0)
+    }
+}
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+.animated.slideDown {
+    -webkit-animation-name: slideDown;
+    -moz-animation-name: slideDown;
+    -o-animation-name: slideDown;
+    animation-name: slideDown
+}
+@-webkit-keyframes slideUp {
+    0% {
+        -webkit-transform: translateY(0)
+    }
+    100% {
+        -webkit-transform: translateY(-100%)
+    }
+}
+@-moz-keyframes slideUp {
+    0% {
+        -moz-transform: translateY(0)
+    }
+    100% {
+        -moz-transform: translateY(-100%)
+    }
+}
+@-o-keyframes slideUp {
+    0% {
+        -o-transform: translateY(0)
+    }
+    100% {
+        -o-transform: translateY(-100%)
+    }
+}
+@keyframes slideUp {
+    0% {
+        transform: translateY(0)
+    }
+    100% {
+        transform: translateY(-100%)
+    }
+}
+.animated.slideUp {
+    -webkit-animation-name: slideUp;
+    -moz-animation-name: slideUp;
+    -o-animation-name: slideUp;
+    animation-name: slideUp
+}
+
+/* Slut -Animationer till menyn kopplat till JS */
+
+/* ----------------------------------------------------------------------------- */
+#table_note{
+    margin-top: 280px;
+    margin-bottom: 25px;
+}
+
+.page-header{
+  margin-top: 150px;
+  color: white;
+}
+
+i.fa{
+  color: white;
+}
+.service-box>h3{
+  color: white;
+
+}
+
+.text-muted{
+  color: white;
+  font-size: 18px;
+}
+
+.vote_user{
+  padding-right: 4px;
+  background:rgba(5,5,5,0.4);
+  color: white;
+}
+
+.vote{
+  text-align: center;
+  font-size: 16px;
+
+
+}
+.the_note{
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0.1) 100%, rgba(255, 255, 255, 0) 100%, rgba(255, 255, 255, 0) 100%);
+  width: 1600px;
+  height: 250px;
+  color: white;
+}
+.note{
+  font-size: 18px;
+  padding-left: 55px;
+  padding-right: 55px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+.form-control:focus {
+-webkit-box-shadow: none;
+      outline: -webkit-focus-ring-color auto 0px;}
+
+
+.form-control::-webkit-input-placeholder { color: white; }
+.form-control:-moz-placeholder { color: white; }
+.form-control::-moz-placeholder { color: white; }
+.form-control:-ms-input-placeholder { color: white; }
+
+
+/* Slut Tabellen */
+
+
+
+/* ----------------------------------------------------------------------------- */

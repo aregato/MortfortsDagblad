@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>Index</title>
+	<link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/css/index.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/countupjs/1.8.5/countUp.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="../static/javascript/noframework.waypoints.js"></script>
+</head>
+<body>
+	<!--                Meny                -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button"><span class="sr-only"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+				<div class="navbar-brand">
+					<a href="/"><img alt="Logo" id="logo" src="../static/pictures/LoggiLueLogo.png"></a>
+					<h2 id="namn">LoggiLue</h2>
+				</div>
+			</div>
+			<div class="navbar-collapse collapse active" id="navbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="menu-item-left"><a href="#about">Om</a></li>
+					<li class="menu-item-left"><a href="#statistics">Statistik</a></li>
+					<li class="menu-item-left"><a href="#help">Bruk</a></li>
+					<li class="menu-item-left"><a href="#contact">Kontakt</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav><!--                Meny slut           -->
+	<!-- Inloggningen -->
+	<div class="pg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3"></div>
+				<div class="col-lg-6">
+					<div class="well smell">
+						<form action="/" class="form-signin" method="post">
+							<h2 class="form-signin-heading">Välkommen till LoggiLue!</h2>
+							<div class="input-group margin-bottom-sm">
+								<span class="input-group-addon"><svg class="svg-icon" viewbox="0 0 20 20">
+									<path d="M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z"></path></svg></span> <input autocomplete="off" class="form-control email" id="email" name="email" placeholder="Email address" required="" type="email">
+								</div>
+								<div class="input-group margin-bottom-sm">
+									<span class="input-group-addon"><svg class="svg-icon" viewbox="0 0 20 20">
+										<path d="M17.308,7.564h-1.993c0-2.929-2.385-5.314-5.314-5.314S4.686,4.635,4.686,7.564H2.693c-0.244,0-0.443,0.2-0.443,0.443v9.3c0,0.243,0.199,0.442,0.443,0.442h14.615c0.243,0,0.442-0.199,0.442-0.442v-9.3C17.75,7.764,17.551,7.564,17.308,7.564 M10,3.136c2.442,0,4.43,1.986,4.43,4.428H5.571C5.571,5.122,7.558,3.136,10,3.136 M16.865,16.864H3.136V8.45h13.729V16.864z M10,10.664c-0.854,0-1.55,0.696-1.55,1.551c0,0.699,0.467,1.292,1.107,1.485v0.95c0,0.243,0.2,0.442,0.443,0.442s0.443-0.199,0.443-0.442V13.7c0.64-0.193,1.106-0.786,1.106-1.485C11.55,11.36,10.854,10.664,10,10.664 M10,12.878c-0.366,0-0.664-0.298-0.664-0.663c0-0.366,0.298-0.665,0.664-0.665c0.365,0,0.664,0.299,0.664,0.665C10.664,12.58,10.365,12.878,10,12.878"></path></svg></span> <input autocomplete="off" class="form-control password" id="pw" name="pw" placeholder="Lösenord" required="" type="password">
+									</div>
+									<div id="{{show_box}}">
+										<p>{{text}}</p>
+									</div>
+									<div class="etc-login-form">
+										<input class="login" type="submit" value="Logga in">
+									</div>
+								</form>
+								<div class="panel panel-default">
+									<div class="panel-body ett text-center">
+										Har du inget konto?
+									</div>
+									<div class="panel-body text-center">
+										<input class="register" onclick="location.href='/register'" type="submit" value="Skapa konto här!">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-8 col-lg-offset-2 text-center">
+									<a class="btn btn-circle page-scroll" href="#about"><i aria-hidden="true" class="fa fa-angle-double-down"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+			</div>
+
+			<!--About sidan  -->
+			<section class="bg-primary" id="about">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-lg-offset-2 text-center">
+							<h2 class="section-heading">Det blir enklare om man hjälper varandra!</h2>
+							<hr class="light">
+							<p class="text-faded">Skulle du missa en föreläsning eller helt enkelt inte bara hann med att anteckna? Då finns det möjlighet på våran sida att ta del av andra studenters anteckningar samt dela med sig av dina egna anteckningar. Anteckningarna kopplas till föreläsningar via KronoX-schemat så de enkelt kan hittas vid behov.</p>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-md-offset-2 text-center">
+							<a class="btn btn-circle page-scroll" href="#statistics"><i aria-hidden="true" class="fa fa-angle-double-down"></i></a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!--Statistik sidan  -->
+			<section class="bg-primary" id="statistics">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<h2 class="section-heading">Statistik om LoggiLue</h2>
+							<hr class="light">
+						</div>
+						<div id="space">
+							<div class="col-lg-5 col-md-6 text-center">
+								<div class="service-box" id="waypoint1">
+									<h3 id="user_registerd">{% for row in total_users %} {{"%s" % (row[0])}} {% endfor %}</h3>
+									<hr>
+									<h4>Elever som valt att registrera sig på vår sida</h4>
+									<h3 id="notes_sum">{% for row in total_notes %} {{"%s" % (row[0])}} {% endfor %}</h3>
+									<hr>
+									<h4>Anteckningar har delats av andra elever</h4>
+									<script>
+									var count2 = new CountUp(document.getElementById("notes_sum"), 0, {% for row in total_notes %} {{"%s" % (row[0])}} {% endfor %}, 0, 10, {  
+										useEasing : true,
+										useGrouping : true,
+										separator : ',',
+									});
+									var waypoint2 = new Waypoint({
+										element: document.getElementById('waypoint1'),
+										handler: function(direction) {
+
+											if (direction == "up") {
+												count2.reset();
+											} else {
+												count2.start();
+											}
+
+										},
+										offset: '50%'
+									});
+
+
+									var count1 = new CountUp(document.getElementById("user_registerd"), 0, {% for row in total_users %} {{"%s" % (row[0])}} {% endfor %}, 0, 10, {  
+										useEasing : true,
+										useGrouping : true,
+										separator : ',',
+									});
+									var waypoint1 = new Waypoint({
+										element: document.getElementById('waypoint1'),
+										handler: function(direction) {
+											if (direction == "up") {
+												count1.reset();
+											} else {
+												count1.start();
+											}
+										},
+										offset: '50%'
+									});
+									</script>
+								</div>
+							</div>
+
+							<div class="col-lg-5 col-md-6 text-center">
+								<div class="service-box">
+									<canvas height="150" id="user_programs" width="140"></canvas>
+									<div class="inner_donut">
+										<h4>Andel elever i respektive Program</h4>
+									</div>
+									<script>
+
+									var data = {
+										labels: [
+											"Informationsarkitekt HT16",
+											"Informationsarkitekt HT15"
+										],
+										datasets: [
+											{
+												data: [{% for row in ht16 %} {{"%s" % (row[0])}} {% endfor %}, {% for row in ht15 %} {{"%s" % (row[0])}} {% endfor %}],
+												backgroundColor: [
+													"#5680E9",
+													"#fff"
+												],
+												hoverBackgroundColor: [
+													"#3F6190",
+													"#5AB9EA"
+												]
+
+											}]
+										};
+
+
+										var inView = false;
+										function isScrolledIntoView(elem)
+										{
+											var docViewTop = $(window).scrollTop();
+											var docViewBottom = docViewTop + $(window).height();
+
+											var elemTop = $(elem).offset().top;
+											var elemBottom = elemTop + $(elem).height();
+
+											return ((elemTop <= docViewBottom) && (elemBottom >= docViewTop));
+										}
+
+										$(window).scroll(function() {
+											if (isScrolledIntoView('#user_programs')) {
+												if (inView) { return; }
+												inView = true;
+												new Chart(
+													document.getElementById("user_programs").getContext("2d"),
+													{type: 'doughnut', data: data });
+												} else {
+													inView = false;
+												}
+											});
+
+
+
+
+											</script>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-8 col-md-offset-2 text-center">
+									<a class="btn btn-circle page-scroll" href="#help"><i aria-hidden="true" class="fa fa-angle-double-down"></i></a>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<!--Hjälp sidan  -->
+					<section id="help">
+						<div class="container">
+							<div class="row">
+								<div class="col-lg-12 text-center">
+									<h2 class="section-heading">Hur fungerar LoggiLue</h2>
+									<hr class="light">
+								</div>
+							</div>
+							<div id="padding">
+								<div class="row">
+									<div class="col-lg-3 col-md-6 text-center">
+										<div class="service-box">
+											<i class="fa fa-4x fa fa-user-o text-primary sr-icons"></i>
+											<h3>Skapa</h3>
+											<p class="text-muted">Registrera ett konto för att få tillgång till alla funktioner. Det är enkelt och snabbt.</p>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 text-center">
+										<div class="service-box">
+											<i class="fa fa-4x fa-pencil text-primary sr-icons"></i>
+											<h3>Anteckna</h3>
+											<p class="text-muted">Dina anteckningar är våran hemsida så se till att göra goda anteckningar. Det lönar sig för både dig och andra studenter!</p>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 text-center">
+										<div class="service-box">
+											<i class="fa fa-4x fa-share-alt text-primary sr-icons"></i>
+											<h3>Dela</h3>
+											<p class="text-muted">Dela med dig av dina anteckningar. Dina anteckningar kan hjälpa en student samtidigt som du själv kan få hjälp av andra studenters anteckningar.</p>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-6 text-center">
+										<div class="service-box">
+											<i class="fa fa-4x fa-eye text-primary sr-icons"></i>
+											<h3>Skåda</h3>
+											<p class="text-muted">Ta del av andra studenters anteckningar. Dessa finns där för att hjälpa dig.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-8 col-lg-offset-2 text-center">
+										<a class="btn btn-circle page-scroll" href="#contact"><i aria-hidden="true" class="fa fa-angle-double-down"></i></a>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<!--Kontakt sidan  -->
+						<section id="contact">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-12 text-center">
+										<h2 class="section-heading">Om oss</h2>
+										<p class="text-faded" id="white_text2">Vi är ett gäng studenter från Informationsarkitekturprogrammet på Malmö Högskola som börjar närma oss slutet på årskurs 1. Som slutprojekt har vi valt att skapa LoggiLue. Vad är då LoggiLue? Jo, det är ett projekt som startades på Malmö Högskola under 2017. Målet var att skapa en sida där varje student kan ta del av andras anteckningar och dela med sig av informationen. Vi själva som studenter vet att alla har ett ämne som de har lite svårare för än andra, i vissa fall kan det då vara jobbigt att be om hjälp eller få ta del av andras anteckningar. Därför skapade vi LoggiLue. Vi hoppas att studenter delar med sig av sina anteckningar och hjälper andra studenter men också att dem själva får hjälp med precis det dem söker.</p>
+										<hr class="light" id="padding_2">
+									</div>
+									<div class="col-lg-3 col-sm-6 text-center">
+										<div class="img-box">
+											<img src="../static/pictures/13690621_296194527395705_5992364367306933674_n.jpg" class="img-circle img-responsive img-center" alt="Profile_pic">
+											<ul class="text-center">
+												<h4 class="white_text">Oscar Kaczmarek<p><small>Designer - Front-End Utvecklare</small></p></h4>
+												<hr class="light">
+												<a href="https://www.facebook.com/oscar.kaczmarek.35" target="_blank"><li><i class="fa fa-facebook"></i></li></a>
+
+											</ul>
+										</div>
+
+									</div>
+
+									<div class="col-lg-3 col-sm-6 text-center">
+										<div class="img-box">
+											<img src="../static/pictures/11695855_10205777048078154_5345277236246050884_n.jpg" class="img-circle img-responsive img-center" alt="Profile_pic2">
+											<ul class="text-center">
+												<h4 class="white_text">Kajsa Araskoug<p><small>Back-End Utvecklare</small></p></h4>
+												<hr class="light">
+												<a href="https://www.facebook.com/kajsa.araskoug?fref=hovercard"  target="_blank"><li><i class="fa fa-facebook"></i></li></a>
+											</ul>
+										</div>
+									</div>
+
+									<div class="col-lg-3 col-sm-6 text-center">
+										<div class="img-box">
+											<img src="../static/pictures/11999792_10153378960636645_5879516353595525450_o.jpg" class="img-circle img-responsive img-center" alt="Profile_pic">
+											<ul class="text-center">
+												<h4 class="white_text">David Hurtig<p><small> Back-End Utvecklare</small></p></h4>
+												<hr class="light">
+												<a href="https://www.facebook.com/david.s.hurtig"  target="_blank"><li><i class="fa fa-facebook"></i></li></a>
+											</ul>
+										</div>
+									</div>
+
+									<div class="col-lg-3 col-sm-6 text-center">
+										<div class="img-box">
+											<img src="../static/pictures/11052500_10207487306370265_2593444496060396051_n.jpg" class="img-circle img-responsive img-center" alt="Profile_pic">
+											<ul class="text-center">
+												<h4 class="white_text">Hannes Linnér<p><small>Front-End Utvecklare</small></p></h4>
+												<hr class="light">
+												<a href="https://www.facebook.com/hannes.linner?fref=hovercard"  target="_blank"><li><i class="fa fa-facebook"></i></li></a>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</section>
+
+						<!--Skripten  -->
+
+						<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+						</script>
+						<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+						</script>
+						<script src="https://use.fontawesome.com/73625e5286.js">
+						</script>
+						<script src="https://npmcdn.com/headroom.js">
+						</script>
+						<script src="../static/javascript/jquery.easing.min.js">
+						</script>
+						<script src="../static/javascript/index.js">
+						</script>
+
+
+
+
+						<!--Slut på skript -->
+
+					</body>
+					</html>

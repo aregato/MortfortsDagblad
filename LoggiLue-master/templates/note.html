@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<title>{% for row in lecture %} {{"%s - %s " % (row[0], row[1])}} {% endfor %}</title>
+	<link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/css/note.css" rel="stylesheet">
+</head>
+<body>
+	<!--                Meny                -->
+	<nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!--Denna länken behöver tas bort så att stylingen inte påverkas -> Detta är mobilknappen-->
+				<button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+					<span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navbar-brand">
+					<a href="/start">
+						<img alt="Logga" id="logo" src="../static/pictures/LoggiLueLogo.png">
+					</a>
+					<h2 id="namn">LoggiLue</h2>
+				</div>
+			</div>
+			<div class="navbar-collapse collapse active" id="navbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="menu-item-right" href="/my_notes">Mina anteckningar</a></li>
+					<li><a class="menu-item-right" href="/statistics">Statistik</a></li>
+					<li class="menu-item-right"><a href="/konto"><span class="glyphicon glyphicon-cog"></span> {{username}}</a></li>
+					<li class="menu-item-right"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--                Meny slut           -->
+
+	<div class="pg">
+		<div class="container">
+			<div class="row">
+				<div class="page-header">
+					{% for row in lecture %}
+					<h3 class="text-center">Anteckningar för: {{"%s - %s " % (row[0], row[1])}}</h3>{% endfor %}
+				</div>
+				<div class="col-lg-6 col-md-6 text-center">
+					<div class="service-box">
+						<i aria-hidden="true" class="fa fa-4x fa fa-calendar"></i> {% for row in lecture %}
+						<h3>Datum</h3>
+						<p class="text-muted">{{"%s" %(row[2])}}</p>{% endfor %}
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 text-center">
+					<div class="service-box">
+						<i aria-hidden="true" class="fa fa-4x fa fa-pencil"></i>
+						<h3><a href="/add_note/{{bokning_id}}">Lägg till anteckning</a></h3>
+						<p class="text-muted"></p>
+					</div>
+				</div>
+			</div>
+
+
+			<div id="notes">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Poäng</th>
+							<th>Anteckningen</th>
+							<th>Skribenten</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for row in notes %}
+						<tr>
+							<td><p><i aria-hidden="true" class="fa fa-2x fa fa-angle-up faa-pulse animation-hover"></i></p>
+								<p>{{"%s" % (row[2])}}</p>
+								<p><i aria-hidden="true" class="fa fa-2x fa fa-angle-down"></i></p>
+							</td>
+							<td><p><a href="/unique_note/{{bokning_id}}/{{"%s" % (row[5])}}"><p id="link_note">{{"%s" % (row[0])}}</p></a></td>
+							<td><p id="skribent">{{"%s" % (row[4])}}</p></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<!--Skripten  -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+	</script>
+	<script src="https://use.fontawesome.com/73625e5286.js">
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://npmcdn.com/headroom.js">
+	</script>
+	<script src="../static/javascript/jquery.easing.min.js">
+	</script>
+	<script src="../static/javascript/index.js">
+	</script> <!--Slut på skript -->
+</body>
+</html>

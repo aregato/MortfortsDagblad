@@ -1,0 +1,17 @@
+{
+  "name": "LoggiLue",
+  "homepage": "https://github.com/davidhurtig/LoggiLue",
+  "authors": [
+    "hanneslinner <hali93001@utb.vaxjo.se>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mina anteckningar</title>
+  <link rel="icon" href="../static/pictures/favicon.ico" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="../static/css/main.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!--                Meny                -->
+  <nav class="navbar navbar-default navbar-fixed-top" id="menu_main" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!--Denna länken behöver tas bort så att stylingen inte påverkas -> Detta är mobilknappen-->
+        <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-brand">
+          <a href="/start">
+            <img alt="Logga" id="logo" src="../static/pictures/LoggiLueLogo.png">
+          </a>
+          <h2 id="namn">LoggiLue</h2>
+        </div>
+      </div>
+      <div class="navbar-collapse collapse active" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a class="menu-item-right" href="/my_notes">Mina anteckningar</a></li>
+          <li><a class="menu-item-right" href="/statistics">Statistik</a></li>
+          <li class="menu-item-right"><a href="/konto"><span class="glyphicon glyphicon-cog"></span> {{username}}</a></li>
+          <li class="menu-item-right"><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logga ut</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav><!--                Meny slut           -->
+  <!--                Meny slut           -->
+  <div class="container start" id="down_down">
+    <h2>Mina anteckningar</h3>
+      <div class="row ">
+        <div class="well två well-lg">
+          <hr>
+          {% for row in notes %}
+          <h4>{{"%s" % (row[0])}}</h4>
+          <p>{{"%s" % (row[1])}}</p>
+          <p>Points: {{"%s" % (row[2])}}</p>
+          <a href="/show_file/{{"%s" % (row[6])}}" target="_blank">{{"%s" % (row[6])}}</a>
+          <a href="/delete_note/{{"%s" % (row[5])}}">Ta bort denna anteckning</a>
+          <hr>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js">
+    </script>
+    <script src="https://use.fontawesome.com/73625e5286.js">
+    </script>
+    <script src="https://npmcdn.com/headroom.js">
+    </script>
+    <script src="../static/javascript/jquery.easing.min.js">
+    </script>
+    <script src="../static/javascript/index.js">
+    </script>
+  </body>
+  </html>
