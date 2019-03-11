@@ -1,0 +1,19 @@
+Sortering bland kommentarer? 
+		-> Kolla krav
+
+Språket verkar inte kunna vissa tecken?
+	Kommer nog från databasen?
+
+
+Non SQL?
+	-> Fråga vad han säger om dessa
+
+
+Gå igen om krav
+
+när man lägger till kommer man till en viss sida som laddar in... och tar en tillbaka dit man var...
+
+Fixa design
+		Tidning
+
+
