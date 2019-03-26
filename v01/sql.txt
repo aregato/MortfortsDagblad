@@ -1,11 +1,11 @@
-psql -U ag6946 -d ag6946_mfdbv3 -h pgserver.mah.se
+﻿psql -U ag6946 -d ag6946_mfdbv3 -h pgserver.mah.se
 jnblid5q
 
-DROP DATABASE IF EXISTS ag6946_mfdbv3;
-CREATE DATABASE ag6946_mfdbv3;
-REVOKE ALL PRIVILEGES ON DATABASE ag6946_mfdbv3 FROM PUBLIC;
+DROP DATABASE IF EXISTS ag6946_mfdbv4;
+CREATE DATABASE ag6946_mfdbv4;
+REVOKE ALL PRIVILEGES ON DATABASE ag6946_mfdbv4 FROM PUBLIC;
 
-\c ag6946_mfdbv3;
+\c ag6946_mfdbv4;
 
 CREATE TABLE forfattare
 (
@@ -62,7 +62,7 @@ CREATE TABLE kommentar
   knamn varchar(50),
   text varchar(200),
   artikel_id SERIAL,
-  datum date,
+  datum VARCHAR,
   PRIMARY KEY (kommentar_id),
   FOREIGN KEY (artikel_id) references artikel(id)
 );
@@ -71,21 +71,20 @@ INSERT INTO forfattare
 (anv_namn, losenord, namn, efternamn, person_nummer, text)
 VALUES
 ('Test', 'Test', 'Testet', 'Testsson', '19930141247','Test Text'),
-('hannes', 'hannes', 'Hannes', 'Linn�r', '196512312451', 'En person som är jag'),
-('jossan', 'jossan', 'Josefine', 'Vesterinen', '1976234985723', 'En annan person'),
-('carl', 'calle', 'Carlof', 'Stensson', '19856747231', 'En person');
+('hannes', 'hannes', 'Hannes', 'Linner', '196512312451', 'Skriver om hästar'),
+('jossan', 'jossan', 'Josefine', 'Vesterinen', '1976234985723', 'En annan skribent'),
+('carl', 'calle', 'Carl', 'Stensson', '19856747231', 'En person');
 
 INSERT INTO artikel
 (rubrik, ingress, a_text, datum)
 VALUES
-('Test Rubrik 1', 'Nam libero tempore, cum soluta nobis est eligendi optio quo minus id quod maxime placeat facere possimus, omnis dolor repellendus.', '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.', '2018-10-05'),
+('Test Rubrik 1', 'Nam libero tempore, cum soluta nobis est eligendi optio quo minus id.', '"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.', '2018-10-05'),
 ('Test Rubrik 2', 'Omnis dolor repellendus.', '"Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor.', '2018-04-05'),
-('Test Rubrik 3', 'Et harum quidem rerum facilis est et expedita distinctio.','Eligendi optio quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2017-10-05'),
+('Test Rubrik 3', 'Et harum quidem rerum facilis est et expedita.','Eligendi optio quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2017-10-05'),
 ('Test Rubrik 4', 'Quidem rerum facilis est et Genegalica perfecto for thabadriubnerat.','Quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.', '2012-06-05'),
-('Test Rubrik 5', 'Est et expeditaEt',' Harum quidem rerum facilis est et expedita distinctio. excepturi sint occaecati cupiditate non provident,  deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2018-10-07'),
+('Test Rubrik 5', 'Est et expeditaet quidem rerum facilis, quidem rerum facilis.',' Harum quidem rerum facilis est et expedita distinctio. excepturi sint occaecati cupiditate non provident,  deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2018-10-07'),
 ('Test Rubrik 6', 'Expedita distinctio.','Eligendi optio quo minus id quod maxime placeat facere possimus, excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2015-01-05'),
-('Stora luftballonger i luften!', '�ntligen kan man se de stora luftballongerna. Inte mist i luften.','Nu �r dem d�r uppe. Sv�var omkring i luften, luftballongerna allts�. Som ni ser p� bilderna sv�var dom i luften och kallas d�rf�r f�r luftballonger.', '2018-10-15'),
-('Vita moln', 'Idag har man sett ett antal vita moln','Vilken dag det har varit. Ett helt antal vita moln har sett idag h�gt �ver marken. Molnen svpte f�rbi i en vit f�rg p� den bl� himlen. Det antal av molnen var vita och s�g ut som dessa p� bilderna.', '2018-10-11')
+('Test Rubrik 7', 'Quidem rerum ','Eligendi optio quo minus id quod maxime placeat facere possimus, Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.', '2015-01-04')
 ;
 
 INSERT INTO skrivit
@@ -160,7 +159,8 @@ select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id
 /FULL
 select a.rubrik, a.ingress, a.a_text, a.datum, f.namn, f.efternamn, b.namn, b.lank from((((forfattare as f join skrivit as s on f.id=s.forfattar_id) join artikel as a on a.id=s.artikel_id) join bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id);
 
-cursor.execute("select a.rubrik, b.namn, b.lank from((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (a))
+cursor.execute("select a.rubrik, b.namn, b.lank fr
+om((bilder as b join artikel_foto as p on b.id=p.bild_id) join artikel as a on a.id=p.artikel_id) where a.id= %s", (a))
 
 cursor.execute("INSERT INTO `notes` (bokning_id, user_id, points, text, rubrik) VALUES (%s, %s, %s, %s, %s)", (bokning_id, user_id, points, text, rubrik))
 
