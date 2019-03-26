@@ -67,6 +67,8 @@ def start():
             "lank": lank,
             "text": art[4]
         }
+
+        print(total)
         totList.append(total)
 
     return render_template("index.html", artikel=artikel, totList=totList)
@@ -360,7 +362,7 @@ def artikel(artikel_id):
         forfattare = ["Ingen", "Forfattare"]
 
 
-    cursor.execute("select knamn, text, kommentar_id, datum from kommentar where artikel_id=%s order by datum desc", (str(art[0])))
+    cursor.execute("select knamn, text, kommentar_id, datum from kommentar where artikel_id=%s order by kommentar_id", (str(art[0])))
     kommentarer = cursor.fetchall()
 
     print(kommentarer)
