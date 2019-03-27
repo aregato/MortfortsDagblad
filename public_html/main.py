@@ -11,7 +11,7 @@ app.secret_key = 'randomNyckel'
 login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 
-conn = psycopg2.connect(dbname="ag6946_mfdbv4", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
+conn = psycopg2.connect(dbname="ag6946_mfdbv3", user="ag6946", password="jnblid5q", host="pgserver.mah.se")
 
 cursor = conn.cursor()
 
@@ -23,7 +23,7 @@ class User(flask_login.UserMixin):
 @app.route('/', methods=["GET","POST"])
 def start():
     #Databas username
-    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum, artikel.a_text from artikel order by artikel.datum desc limit 6;")
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
     artikel = cursor.fetchall()
 
     totList = []
@@ -64,10 +64,8 @@ def start():
             "mId": mid,
             "modalId":modalId,
             "forfattare": forfattare,
-            "lank": lank,
-            "text": art[4]
+            "lank": lank
         }
-
         totList.append(total)
 
     return render_template("index.html", artikel=artikel, totList=totList)
@@ -233,7 +231,7 @@ def addAuthor():
 
 
     try:
-        cursor.execute("INSERT INTO forfattare (anv_namn, losenord, namn, efternamn, person_nummer)VALUES(%s, %s, %s, %s, %s)", (anv_namn, losenord, namn, efternamn, telefon))
+        cursor.execute("INSERT INTO forfattare (anv_namn, losenord, namn, efternamn, telefon)VALUES(%s, %s, %s, %s, %s)", (anv_namn, losenord, namn, efternamn, telefon))
         conn.commit()
     except:
         print("Error till db!")
@@ -361,8 +359,10 @@ def artikel(artikel_id):
         forfattare = ["Ingen", "Forfattare"]
 
 
-    cursor.execute("select knamn, text, kommentar_id, datum from kommentar where artikel_id=%s order by kommentar_id", (str(art[0])))
+    cursor.execute("select knamn, text, kommentar_id, datum from kommentar where artikel_id=%s order by datum desc", (str(art[0])))
     kommentarer = cursor.fetchall()
+
+    print(kommentarer)
 
     total = {
         "rubrik": art[1],
@@ -386,9 +386,8 @@ def addComment():
     now = datetime.datetime.now()
 
     datum = str(now)
-    print(now)
-    print()
     print(datum)
+    
 
     try:
         cursor.execute("INSERT INTO kommentar (knamn, text, artikel_id, datum)VALUES(%s, %s, %s, %s)", (namn, kommentar, art_id, datum))
@@ -396,7 +395,7 @@ def addComment():
     except:
         print("Error till db!")
 
-    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum, artikel.a_text from artikel order by artikel.datum desc limit 6;")
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
     artikel = cursor.fetchall()
 
     totList = []
@@ -436,8 +435,7 @@ def addComment():
             "mId": mid,
             "modalId":modalId,
             "forfattare": forfattare,
-            "lank": lank,
-            "text": art[4]
+            "lank": lank
         }
         totList.append(total)
 
@@ -452,7 +450,7 @@ def delete_note(kommentar_id):
     cursor.execute(remove, [delete])
     conn.commit()
 
-    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum, artikel.a_text from artikel order by artikel.datum desc limit 6;")
+    cursor.execute("select artikel.id, artikel.rubrik, artikel.ingress, artikel.datum from artikel order by artikel.datum desc limit 6;")
     artikel = cursor.fetchall()
 
     totList = []
@@ -492,8 +490,7 @@ def delete_note(kommentar_id):
             "mId": mid,
             "modalId":modalId,
             "forfattare": forfattare,
-            "lank": lank,
-            "text": art[4]
+            "lank": lank
         }
         totList.append(total)
 
