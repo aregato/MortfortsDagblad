@@ -251,6 +251,7 @@ def addAuthor():
 
 @app.route('/connectForf', methods=["POST"])
 def connectForf():
+    
     art_id = request.form["art_id"]
     forf_id = request.form["forf_id"]
 

@@ -131,10 +131,7 @@ VALUES
 (7, 3, 'En bild text, till bild'),
 (7, 4, 'En bild text, till bild'),
 (7, 5, 'En bild text, till bild'),
-(8, 7, 'Alt bild'),
-(7, 8, 'Sista bilden')
-;
-
+(7, 7, 'Alt bild');
 
 INSERT INTO kommentar
 (knamn, text, artikel_id, datum)
