@@ -1,5 +1,0 @@
-Tabell bilder ska ha alt text
-
-Förtydliga ER plus en tabell över det med beskrivning'¨
-
-LÄgg till 1  -> M == En artikel har flera kommentarer...
